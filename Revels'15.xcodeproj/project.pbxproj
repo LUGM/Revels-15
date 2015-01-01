@@ -14,6 +14,9 @@
 		A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3162DD41A52D98D007F7010 /* Images.xcassets */; };
 		A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3162DD61A52D98D007F7010 /* LaunchScreen.xib */; };
 		A3162DE41A52D98D007F7010 /* Revels_15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DE31A52D98D007F7010 /* Revels_15Tests.m */; };
+		A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DEF1A52DB78007F7010 /* PageContentViewController.m */; };
+		A319A5921A532032004BD5DA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A319A5911A532032004BD5DA /* EventCell.xib */; };
+		A319A5951A53209A004BD5DA /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A319A5941A53209A004BD5DA /* EventTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,11 @@
 		A3162DDD1A52D98D007F7010 /* Revels'15Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Revels'15Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3162DE21A52D98D007F7010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3162DE31A52D98D007F7010 /* Revels_15Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Revels_15Tests.m; sourceTree = "<group>"; };
+		A3162DEE1A52DB78007F7010 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		A3162DEF1A52DB78007F7010 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		A319A5911A532032004BD5DA /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		A319A5931A53209A004BD5DA /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
+		A319A5941A53209A004BD5DA /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +89,8 @@
 		A3162DC61A52D98D007F7010 /* Revels'15 */ = {
 			isa = PBXGroup;
 			children = (
-				A3162DCB1A52D98D007F7010 /* AppDelegate.h */,
-				A3162DCC1A52D98D007F7010 /* AppDelegate.m */,
-				A3162DCE1A52D98D007F7010 /* ViewController.h */,
-				A3162DCF1A52D98D007F7010 /* ViewController.m */,
+				A319A5901A532027004BD5DA /* View */,
+				A3162DED1A52DA35007F7010 /* Controller */,
 				A3162DD11A52D98D007F7010 /* Main.storyboard */,
 				A3162DD41A52D98D007F7010 /* Images.xcassets */,
 				A3162DD61A52D98D007F7010 /* LaunchScreen.xib */,
@@ -96,6 +102,8 @@
 		A3162DC71A52D98D007F7010 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3162DCB1A52D98D007F7010 /* AppDelegate.h */,
+				A3162DCC1A52D98D007F7010 /* AppDelegate.m */,
 				A3162DC81A52D98D007F7010 /* Info.plist */,
 				A3162DC91A52D98D007F7010 /* main.m */,
 			);
@@ -117,6 +125,27 @@
 				A3162DE21A52D98D007F7010 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A3162DED1A52DA35007F7010 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3162DCE1A52D98D007F7010 /* ViewController.h */,
+				A3162DCF1A52D98D007F7010 /* ViewController.m */,
+				A3162DEE1A52DB78007F7010 /* PageContentViewController.h */,
+				A3162DEF1A52DB78007F7010 /* PageContentViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A319A5901A532027004BD5DA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A319A5911A532032004BD5DA /* EventCell.xib */,
+				A319A5931A53209A004BD5DA /* EventTableViewCell.h */,
+				A319A5941A53209A004BD5DA /* EventTableViewCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
+				A319A5921A532032004BD5DA /* EventCell.xib in Resources */,
 				A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
 			);
@@ -220,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3162DD01A52D98D007F7010 /* ViewController.m in Sources */,
+				A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */,
 				A3162DCD1A52D98D007F7010 /* AppDelegate.m in Sources */,
 				A3162DCA1A52D98D007F7010 /* main.m in Sources */,
+				A319A5951A53209A004BD5DA /* EventTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -332,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -412,6 +444,7 @@
 				A3162DE91A52D98D007F7010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3162DEA1A52D98D007F7010 /* Build configuration list for PBXNativeTarget "Revels'15Tests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +453,7 @@
 				A3162DEC1A52D98D007F7010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
