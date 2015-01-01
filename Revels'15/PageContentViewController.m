@@ -26,7 +26,10 @@
     myTableView.dataSource = self;
     myTableView.delegate = self;
     [self viewDidLayoutSubviews];
+    self.view.backgroundColor = [UIColor grayColor];
+    myTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:myTableView];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -41,7 +44,7 @@
 
 -(void)viewDidLayoutSubviews
 {
-    myTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    myTableView.contentInset = UIEdgeInsetsMake(64, 0, 35, 0);
 
 }
 
@@ -90,6 +93,7 @@
         cell = [nib objectAtIndex:0];
     }
     cell.backgroundColor = [UIColor redColor];
+    cell.eventNameLabel.text = [NSString stringWithFormat:@" Table:%lu Row:%li",(unsigned long)_pageIndex,(long)indexPath.row];
     return cell;
 }
 

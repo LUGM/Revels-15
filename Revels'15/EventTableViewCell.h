@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EventTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
 
 @end

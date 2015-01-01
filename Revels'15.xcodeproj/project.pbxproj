@@ -17,6 +17,9 @@
 		A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DEF1A52DB78007F7010 /* PageContentViewController.m */; };
 		A319A5921A532032004BD5DA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A319A5911A532032004BD5DA /* EventCell.xib */; };
 		A319A5951A53209A004BD5DA /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A319A5941A53209A004BD5DA /* EventTableViewCell.m */; };
+		A3554BBE1A55BAFB0069896C /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A3554BBD1A55BAFB0069896C /* StyledPageControl.m */; };
+		A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */; };
+		A3EA5E801A554355001DA8FD /* MenuOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EA5E7F1A554355001DA8FD /* MenuOptions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,11 @@
 		A319A5911A532032004BD5DA /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		A319A5931A53209A004BD5DA /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
 		A319A5941A53209A004BD5DA /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
+		A3554BBC1A55BAFB0069896C /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
+		A3554BBD1A55BAFB0069896C /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
+		A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuOptions.xib; sourceTree = "<group>"; };
+		A3EA5E7E1A554355001DA8FD /* MenuOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuOptions.h; sourceTree = "<group>"; };
+		A3EA5E7F1A554355001DA8FD /* MenuOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuOptions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +97,7 @@
 		A3162DC61A52D98D007F7010 /* Revels'15 */ = {
 			isa = PBXGroup;
 			children = (
+				A3554BBA1A55BADC0069896C /* Libraries */,
 				A319A5901A532027004BD5DA /* View */,
 				A3162DED1A52DA35007F7010 /* Controller */,
 				A3162DD11A52D98D007F7010 /* Main.storyboard */,
@@ -141,11 +150,47 @@
 		A319A5901A532027004BD5DA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3EA5E7B1A554288001DA8FD /* MenuOptions */,
+				A3EA5E7A1A554270001DA8FD /* EventCell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		A3554BBA1A55BADC0069896C /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A3554BBB1A55BAE60069896C /* StyledPageControl */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A3554BBB1A55BAE60069896C /* StyledPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				A3554BBC1A55BAFB0069896C /* StyledPageControl.h */,
+				A3554BBD1A55BAFB0069896C /* StyledPageControl.m */,
+			);
+			name = StyledPageControl;
+			sourceTree = "<group>";
+		};
+		A3EA5E7A1A554270001DA8FD /* EventCell */ = {
+			isa = PBXGroup;
+			children = (
 				A319A5911A532032004BD5DA /* EventCell.xib */,
 				A319A5931A53209A004BD5DA /* EventTableViewCell.h */,
 				A319A5941A53209A004BD5DA /* EventTableViewCell.m */,
 			);
-			name = View;
+			name = EventCell;
+			sourceTree = "<group>";
+		};
+		A3EA5E7B1A554288001DA8FD /* MenuOptions */ = {
+			isa = PBXGroup;
+			children = (
+				A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */,
+				A3EA5E7E1A554355001DA8FD /* MenuOptions.h */,
+				A3EA5E7F1A554355001DA8FD /* MenuOptions.m */,
+			);
+			name = MenuOptions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +276,7 @@
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
 				A319A5921A532032004BD5DA /* EventCell.xib in Resources */,
 				A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */,
+				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,10 +296,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3162DD01A52D98D007F7010 /* ViewController.m in Sources */,
+				A3EA5E801A554355001DA8FD /* MenuOptions.m in Sources */,
 				A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */,
 				A3162DCD1A52D98D007F7010 /* AppDelegate.m in Sources */,
 				A3162DCA1A52D98D007F7010 /* main.m in Sources */,
 				A319A5951A53209A004BD5DA /* EventTableViewCell.m in Sources */,
+				A3554BBE1A55BAFB0069896C /* StyledPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Ox-UJ-aP2">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
@@ -19,10 +20,32 @@
                     </view>
                     <navigationItem key="navigationItem" id="fC0-Rg-X5x"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="MPy-DK-caf" kind="presentation" identifier="follow" id="aL4-Ra-PBW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1071" y="347"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GsS-oN-pHf">
+            <objects>
+                <viewController id="MPy-DK-caf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hM6-lT-w7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="J4i-QN-iKA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V8H-vi-gCW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="643-Yz-WWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="-292"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="SqI-Gm-H7o">
@@ -32,7 +55,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3LW-HQ-vBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1506" y="30"/>
+            <point key="canvasLocation" x="1467" y="-37"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="BMh-Rh-sKt">
@@ -52,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2r-se-7Yc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1506" y="670"/>
+            <point key="canvasLocation" x="1467" y="603"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HF3-uu-2FQ">

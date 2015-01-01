@@ -7,9 +7,18 @@
 //
 
 #import "ViewController.h"
+#import "StyledPageControl.h"
 
 
 @interface ViewController ()
+{
+    UIView * blurBackgroundView;
+    UIView * menuView;
+    
+    StyledPageControl *pageControl;         //All this for hiding the blank view behind the page control
+    NSUInteger pageIndex;
+    PageContentViewController *pageContentViewController;
+}
 
 @end
 
@@ -18,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _pageTitles = @[@"1",@"2",@"3",@"4"];
+    _pageTitles = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -36,11 +45,88 @@
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMenuOptions)];
+    
+    self.view.backgroundColor = [UIColor yellowColor];
+    
+    
+    //All this for hiding the blank view behind the page control
+    pageControl = [[StyledPageControl alloc] init];
+    [self.navigationController.view addSubview:pageControl];
+    pageControl.frame = CGRectMake(0, self.view.frame.size.height-75, self.view.frame.size.width, 100);
+    [pageControl setCoreNormalColor:[UIColor yellowColor]];
+    [pageControl setCoreSelectedColor:[UIColor blueColor]];
+    [pageControl setPageControlStyle:PageControlStyleDefault];
+    [pageControl setNumberOfPages:(int)[_pageTitles count]];
+    [pageControl setCurrentPage:0];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Menu Options View
+
+-(void)showMenuOptions
+{
+    blurBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [blurBackgroundView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeBgAndMenuWithdirectionUp:)]];
+    blurBackgroundView.backgroundColor = [UIColor blackColor];
+    blurBackgroundView.alpha = 0;
+    [self.navigationController.view addSubview:blurBackgroundView];
+    
+    NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"MenuOptions" owner:self options:nil];
+    menuView = [[UIView alloc]init];
+    menuView = [nib objectAtIndex:0];
+    menuView.center = self.view.center;
+    menuView.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height - 50);
+    
+    [self.navigationController.view addSubview:menuView];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0
+                        options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        blurBackgroundView.alpha = 0.8;
+        menuView.transform = CGAffineTransformIdentity;
+        
+    } completion:nil];
+}
+
+#warning Remember to put the direction
+
+-(void)removeBgAndMenuWithdirectionUp:(BOOL)direction
+{
+    if (!direction) {
+    [UIView animateWithDuration:0.5
+                          delay:0
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0
+                        options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        blurBackgroundView.alpha = 0;
+        menuView.frame = CGRectMake(menuView.frame.origin.x, self.view.frame.size.height, menuView.frame.size.width, menuView.frame.size.height);
+    } completion:^(BOOL finished) {
+        blurBackgroundView = nil;
+        menuView = nil;
+    }];
+    }
+    else{
+    [UIView animateWithDuration:0.8
+                          delay:0
+         usingSpringWithDamping:0.8
+          initialSpringVelocity:0
+                        options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            blurBackgroundView.alpha = 0;
+            menuView.frame = CGRectMake(menuView.frame.origin.x,0 - self.view.frame.size.height, menuView.frame.size.width, menuView.frame.size.height);
+        } completion:^(BOOL finished) {
+            blurBackgroundView = nil;
+            menuView = nil;
+        }];
+    }
+
 }
 
 #pragma mark - Page View Controller Data Source
@@ -79,11 +165,20 @@
     }
     
     // Create a new view controller and pass suitable data.
-    PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+    pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     pageContentViewController.titleText = self.pageTitles[index];
     pageContentViewController.pageIndex = index;
+    pageIndex = index;
     
     return pageContentViewController;
+}
+
+//All this for hiding the blank view behind the page control
+-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    if (finished) {
+        [pageControl setCurrentPage:(int)pageIndex];
+    }
 }
 
 @end
