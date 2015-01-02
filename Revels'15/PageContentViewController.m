@@ -25,11 +25,12 @@
     myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
-    [self viewDidLayoutSubviews];
+
     self.view.backgroundColor = [UIColor grayColor];
     myTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:myTableView];
-
+    myTableView.contentInset = UIEdgeInsetsMake(64, 0, 35, 0);
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -44,7 +45,7 @@
 
 -(void)viewDidLayoutSubviews
 {
-    myTableView.contentInset = UIEdgeInsetsMake(64, 0, 35, 0);
+    
 
 }
 
