@@ -20,7 +20,7 @@
 
 @property (weak, nonatomic) id<SSJSONModelDelegate> delegate;
 @property (strong) id parsedJsonData;
-@property (strong)NSURL * Url;
+@property (strong) NSURL * Url;
 
 -(void)sendRequestWithUrl:(NSURL*)Url;
 

@@ -16,7 +16,7 @@
 		A3162DE41A52D98D007F7010 /* Revels_15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DE31A52D98D007F7010 /* Revels_15Tests.m */; };
 		A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DEF1A52DB78007F7010 /* PageContentViewController.m */; };
 		A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32AB5EB1A5C3D2800787CCD /* EventCell.xib */; };
-		A32AB5F21A5C404400787CCD /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F11A5C404400787CCD /* Events.m */; };
+		A32AB5F21A5C404400787CCD /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F11A5C404400787CCD /* Event.m */; };
 		A32AB5F51A5C40F600787CCD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F41A5C40F600787CCD /* MBProgressHUD.m */; };
 		A32AB5F91A5C414A00787CCD /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */; };
 		A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */; };
@@ -52,8 +52,8 @@
 		A3162DEE1A52DB78007F7010 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		A3162DEF1A52DB78007F7010 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		A32AB5EB1A5C3D2800787CCD /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		A32AB5F01A5C404400787CCD /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
-		A32AB5F11A5C404400787CCD /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.m; sourceTree = "<group>"; };
+		A32AB5F01A5C404400787CCD /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		A32AB5F11A5C404400787CCD /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		A32AB5F31A5C40F600787CCD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A32AB5F41A5C40F600787CCD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A32AB5F71A5C414A00787CCD /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
@@ -169,8 +169,8 @@
 		A32AB5EA1A5C3CEC00787CCD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A32AB5F01A5C404400787CCD /* Events.h */,
-				A32AB5F11A5C404400787CCD /* Events.m */,
+				A32AB5F01A5C404400787CCD /* Event.h */,
+				A32AB5F11A5C404400787CCD /* Event.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A32AB5F21A5C404400787CCD /* Events.m in Sources */,
+				A32AB5F21A5C404400787CCD /* Event.m in Sources */,
 				A3162DD01A52D98D007F7010 /* ViewController.m in Sources */,
 				A32AB5F91A5C414A00787CCD /* EventTableViewCell.m in Sources */,
 				A3EA5E801A554355001DA8FD /* MenuOptions.m in Sources */,

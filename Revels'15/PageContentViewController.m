@@ -9,18 +9,14 @@
 #import "PageContentViewController.h"
 #import "EventTableViewCell.h"
 #import "SSJSONModel.h"
-#import "Events.h"
+#import "Event.h"
 #import "MBProgressHUD.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
     UITableView * myTableView;
     SSJSONModel * jsonReq;
-    NSArray * mainDictionary;
-    NSArray * mainArray;
-    NSMutableArray * eventNames;
-    NSMutableArray * eventLocations;
-    Events * eventInstance;
+    NSMutableArray * mainArray;
     MBProgressHUD * hud;
 }
 
@@ -52,8 +48,11 @@
 -(void)jsonRequestDidCompleteWithDict:(NSArray *)dict model:(SSJSONModel *)JSONModel
 {
     if (JSONModel == jsonReq) {
-        mainArray =[jsonReq.parsedJsonData objectForKey:@"data"];
-        NSLog(@"%@",mainArray);
+        mainArray = [NSMutableArray array];
+        for(NSDictionary *dict in [jsonReq.parsedJsonData objectForKey:@"data"]) {
+            Event *event = [[Event alloc] initWithDict:dict];
+            [mainArray addObject:event];
+        }
         [myTableView reloadData];
         [hud hide:YES];
     }
@@ -108,12 +107,9 @@
         NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"EventCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
-    
-    eventInstance = [eventInstance initWithArray:mainArray withIndex:indexPath];
-    
-    //    cell.eventNameLabel.text = [[mainArray objectAtIndex:indexPath.row] objectForKey:@"event"];
-    cell.eventNameLabel.text = eventInstance.event;
+    Event *event = [mainArray objectAtIndex:indexPath.row];
+    cell.eventLocationLabel.text = event.location;
+    cell.eventNameLabel.text = event.event;
     return cell;
 }
 
