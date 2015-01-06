@@ -2,8 +2,8 @@
 //  EventTableViewCell.m
 //  Revels'15
 //
-//  Created by Shubham Sorte on 30/12/14.
-//  Copyright (c) 2014 LUGManipal. All rights reserved.
+//  Created by Shubham Sorte on 06/01/15.
+//  Copyright (c) 2015 LUGManipal. All rights reserved.
 //
 
 #import "EventTableViewCell.h"

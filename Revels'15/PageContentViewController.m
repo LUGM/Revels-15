@@ -8,10 +8,20 @@
 
 #import "PageContentViewController.h"
 #import "EventTableViewCell.h"
+#import "SSJSONModel.h"
+#import "Events.h"
+#import "MBProgressHUD.h"
 
-@interface PageContentViewController ()
+@interface PageContentViewController () <SSJSONModelDelegate>
 {
     UITableView * myTableView;
+    SSJSONModel * jsonReq;
+    NSArray * mainDictionary;
+    NSArray * mainArray;
+    NSMutableArray * eventNames;
+    NSMutableArray * eventLocations;
+    Events * eventInstance;
+    MBProgressHUD * hud;
 }
 
 @end
@@ -25,28 +35,33 @@
     myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
-
+    
     self.view.backgroundColor = [UIColor grayColor];
     myTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:myTableView];
     myTableView.contentInset = UIEdgeInsetsMake(64, 0, 35, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading";
+    hud.dimBackground = YES;
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)jsonRequestDidCompleteWithDict:(NSArray *)dict model:(SSJSONModel *)JSONModel
 {
-    
+    if (JSONModel == jsonReq) {
+        mainArray =[jsonReq.parsedJsonData objectForKey:@"data"];
+        NSLog(@"%@",mainArray);
+        [myTableView reloadData];
+        [hud hide:YES];
+    }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
--(void)viewDidLayoutSubviews
-{
-    
-
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
@@ -54,7 +69,7 @@
     if (motion == UIEventSubtypeMotionShake)
     {
         [self willScrollToTop];
-    } 
+    }
 }
 
 -(void)willScrollToTop
@@ -63,14 +78,14 @@
     [myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark- Table View Datasource
 
@@ -81,7 +96,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [mainArray count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,8 +108,12 @@
         NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"EventCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    cell.backgroundColor = [UIColor redColor];
-    cell.eventNameLabel.text = [NSString stringWithFormat:@" Table:%lu Row:%li",(unsigned long)_pageIndex,(long)indexPath.row];
+    
+    
+    eventInstance = [eventInstance initWithArray:mainArray withIndex:indexPath];
+    
+    //    cell.eventNameLabel.text = [[mainArray objectAtIndex:indexPath.row] objectForKey:@"event"];
+    cell.eventNameLabel.text = eventInstance.event;
     return cell;
 }
 

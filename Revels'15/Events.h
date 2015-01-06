@@ -10,4 +10,11 @@
 
 @interface Events : NSObject
 
+@property (nonatomic,strong) NSString*event;
+@property (nonatomic,strong) NSString *location;
+@property(nonatomic,strong) NSDictionary * mainDictionary;
+
+-(id)initWithArray:(NSArray*)arr withIndex:(NSIndexPath*)indexPath;
+-(void)initwithDict:(NSDictionary*)dict;
+
 @end

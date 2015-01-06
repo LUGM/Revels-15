@@ -15,8 +15,11 @@
 		A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3162DD61A52D98D007F7010 /* LaunchScreen.xib */; };
 		A3162DE41A52D98D007F7010 /* Revels_15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DE31A52D98D007F7010 /* Revels_15Tests.m */; };
 		A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DEF1A52DB78007F7010 /* PageContentViewController.m */; };
-		A319A5921A532032004BD5DA /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A319A5911A532032004BD5DA /* EventCell.xib */; };
-		A319A5951A53209A004BD5DA /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A319A5941A53209A004BD5DA /* EventTableViewCell.m */; };
+		A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32AB5EB1A5C3D2800787CCD /* EventCell.xib */; };
+		A32AB5F21A5C404400787CCD /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F11A5C404400787CCD /* Events.m */; };
+		A32AB5F51A5C40F600787CCD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F41A5C40F600787CCD /* MBProgressHUD.m */; };
+		A32AB5F91A5C414A00787CCD /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */; };
+		A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */; };
 		A3554BBE1A55BAFB0069896C /* StyledPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A3554BBD1A55BAFB0069896C /* StyledPageControl.m */; };
 		A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */; };
 		A3EA5E801A554355001DA8FD /* MenuOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EA5E7F1A554355001DA8FD /* MenuOptions.m */; };
@@ -48,9 +51,15 @@
 		A3162DE31A52D98D007F7010 /* Revels_15Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Revels_15Tests.m; sourceTree = "<group>"; };
 		A3162DEE1A52DB78007F7010 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		A3162DEF1A52DB78007F7010 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
-		A319A5911A532032004BD5DA /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		A319A5931A53209A004BD5DA /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
-		A319A5941A53209A004BD5DA /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
+		A32AB5EB1A5C3D2800787CCD /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		A32AB5F01A5C404400787CCD /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
+		A32AB5F11A5C404400787CCD /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.m; sourceTree = "<group>"; };
+		A32AB5F31A5C40F600787CCD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A32AB5F41A5C40F600787CCD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A32AB5F71A5C414A00787CCD /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
+		A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
+		A32AB5FA1A5C41F100787CCD /* SSJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSJSONModel.h; sourceTree = "<group>"; };
+		A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSJSONModel.m; sourceTree = "<group>"; };
 		A3554BBC1A55BAFB0069896C /* StyledPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyledPageControl.h; sourceTree = "<group>"; };
 		A3554BBD1A55BAFB0069896C /* StyledPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledPageControl.m; sourceTree = "<group>"; };
 		A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuOptions.xib; sourceTree = "<group>"; };
@@ -97,6 +106,7 @@
 		A3162DC61A52D98D007F7010 /* Revels'15 */ = {
 			isa = PBXGroup;
 			children = (
+				A32AB5EA1A5C3CEC00787CCD /* Model */,
 				A3554BBA1A55BADC0069896C /* Libraries */,
 				A319A5901A532027004BD5DA /* View */,
 				A3162DED1A52DA35007F7010 /* Controller */,
@@ -156,9 +166,38 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		A32AB5EA1A5C3CEC00787CCD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A32AB5F01A5C404400787CCD /* Events.h */,
+				A32AB5F11A5C404400787CCD /* Events.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A32AB5F61A5C410100787CCD /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A32AB5F31A5C40F600787CCD /* MBProgressHUD.h */,
+				A32AB5F41A5C40F600787CCD /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		A32AB5FD1A5C41FE00787CCD /* SSJSONParse */ = {
+			isa = PBXGroup;
+			children = (
+				A32AB5FA1A5C41F100787CCD /* SSJSONModel.h */,
+				A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */,
+			);
+			name = SSJSONParse;
+			sourceTree = "<group>";
+		};
 		A3554BBA1A55BADC0069896C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A32AB5FD1A5C41FE00787CCD /* SSJSONParse */,
+				A32AB5F61A5C410100787CCD /* MBProgressHUD */,
 				A3554BBB1A55BAE60069896C /* StyledPageControl */,
 			);
 			name = Libraries;
@@ -176,9 +215,9 @@
 		A3EA5E7A1A554270001DA8FD /* EventCell */ = {
 			isa = PBXGroup;
 			children = (
-				A319A5911A532032004BD5DA /* EventCell.xib */,
-				A319A5931A53209A004BD5DA /* EventTableViewCell.h */,
-				A319A5941A53209A004BD5DA /* EventTableViewCell.m */,
+				A32AB5EB1A5C3D2800787CCD /* EventCell.xib */,
+				A32AB5F71A5C414A00787CCD /* EventTableViewCell.h */,
+				A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */,
 			);
 			name = EventCell;
 			sourceTree = "<group>";
@@ -274,9 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
-				A319A5921A532032004BD5DA /* EventCell.xib in Resources */,
 				A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */,
 				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
+				A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,12 +334,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32AB5F21A5C404400787CCD /* Events.m in Sources */,
 				A3162DD01A52D98D007F7010 /* ViewController.m in Sources */,
+				A32AB5F91A5C414A00787CCD /* EventTableViewCell.m in Sources */,
 				A3EA5E801A554355001DA8FD /* MenuOptions.m in Sources */,
 				A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */,
+				A32AB5F51A5C40F600787CCD /* MBProgressHUD.m in Sources */,
 				A3162DCD1A52D98D007F7010 /* AppDelegate.m in Sources */,
+				A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */,
 				A3162DCA1A52D98D007F7010 /* main.m in Sources */,
-				A319A5951A53209A004BD5DA /* EventTableViewCell.m in Sources */,
 				A3554BBE1A55BAFB0069896C /* StyledPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

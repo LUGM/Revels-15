@@ -10,4 +10,34 @@
 
 @implementation Events
 
+@dynamic event;
+@dynamic location;
+
+//-(id)initWithDict:(NSDictionary*)dict
+//{
+//    self = [super init];
+//
+//    if (self) {
+//
+//        }
+//
+//    }
+//}
+
+
+#warning This shiz ain't working :(
+
+-(id)initWithArray:(NSArray *)arr withIndex:(NSIndexPath *)indexPath
+{
+    self = [super init];
+    if (self) {
+        
+        self.event = [[arr objectAtIndex:(int)indexPath] objectForKey:@"event"];
+        
+    }
+    
+    return self;
+}
+
 @end
+
