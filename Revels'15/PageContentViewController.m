@@ -110,6 +110,9 @@
     Event *event = [mainArray objectAtIndex:indexPath.row];
     cell.eventLocationLabel.text = event.location;
     cell.eventNameLabel.text = event.event;
+    cell.eventStartTimeLabel.text = event.start;
+    cell.eventStopTimeLabel.text = event.stop;
+    
     return cell;
 }
 

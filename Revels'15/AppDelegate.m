@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 LUGManipal. All rights reserved.
 //
 
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
@@ -18,7 +21,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-
+    //Navigation Bar Tint Colour
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x009589)];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     return YES;
 }
 

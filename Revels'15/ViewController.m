@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 LUGManipal. All rights reserved.
 //
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 #import "ViewController.h"
 #import "StyledPageControl.h"
-
 
 @interface ViewController ()
 {
@@ -29,6 +30,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     _pageTitles = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     
+    
+    //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
@@ -52,13 +56,15 @@
     
     //All this for hiding the blank view behind the page control
     pageControl = [[StyledPageControl alloc] init];
-    [self.navigationController.view addSubview:pageControl];
+    [self.view addSubview:pageControl];
     pageControl.frame = CGRectMake(0, self.view.frame.size.height-75, self.view.frame.size.width, 100);
-    [pageControl setCoreNormalColor:[UIColor yellowColor]];
-    [pageControl setCoreSelectedColor:[UIColor blueColor]];
+    [pageControl setCoreNormalColor:[UIColor grayColor]];
+    [pageControl setCoreSelectedColor:UIColorFromRGB(0x009589)];
     [pageControl setPageControlStyle:PageControlStyleDefault];
     [pageControl setNumberOfPages:(int)[_pageTitles count]];
     [pageControl setCurrentPage:0];
+    [pageControl setDiameter:10];
+    
     
 }
 
@@ -178,6 +184,7 @@
 {
     if (finished) {
         [pageControl setCurrentPage:(int)pageIndex];
+        NSLog(@"%lu",(unsigned long)pageIndex);
     }
 }
 

@@ -12,6 +12,9 @@
 
 @property (nonatomic,strong) NSString *event;
 @property (nonatomic,strong) NSString *location;
+@property (nonatomic,strong) NSString *start;
+@property (nonatomic,strong) NSString *stop;
+
 @property(nonatomic,strong) NSDictionary *mainDictionary;
 
 -(id)initWithDict:(NSDictionary*)dict;
