@@ -11,7 +11,7 @@
 @interface PageContentViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 
-@property NSUInteger pageIndex;
+@property NSInteger pageIndex;
 @property NSString *titleText;
 
 @end

@@ -6,11 +6,16 @@
 //  Copyright (c) 2014 LUGManipal. All rights reserved.
 //
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 #import "PageContentViewController.h"
 #import "EventTableViewCell.h"
 #import "SSJSONModel.h"
 #import "Event.h"
 #import "MBProgressHUD.h"
+#import "PQFCirclesInTriangle.h"
+#import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
@@ -18,7 +23,11 @@
     SSJSONModel * jsonReq;
     NSMutableArray * mainArray;
     MBProgressHUD * hud;
+    UIView * loadBg;
+    AppDelegate * appDelegate;
+
 }
+@property (nonatomic, strong) PQFCirclesInTriangle *circlesInTriangles;
 
 @end
 
@@ -27,12 +36,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    
+    loadBg = [[UIView alloc]initWithFrame:self.view.frame];
+    loadBg.backgroundColor = UIColorFromRGB(0x009589);
+    loadBg.alpha = 0.75;
+    [self.view addSubview:loadBg];
     
     myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
     
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = UIColorFromRGB(0xf2f2f2);
     myTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:myTableView];
     myTableView.contentInset = UIEdgeInsetsMake(64, 0, 35, 0);
@@ -40,9 +56,19 @@
     
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
-    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading";
-    hud.dimBackground = YES;
+//    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.labelText = @"Loading";
+//    hud.dimBackground = YES;
+    self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+    [self.circlesInTriangles show];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+//    ViewController * controller = [[ViewController alloc]init];
+//    [controller updatePage];
+    appDelegate.globalPageIndex = (int*)_pageIndex;
 }
 
 -(void)jsonRequestDidCompleteWithDict:(NSArray *)dict model:(SSJSONModel *)JSONModel
@@ -54,7 +80,12 @@
             [mainArray addObject:event];
         }
         [myTableView reloadData];
-        [hud hide:YES];
+//        [hud hide:YES];
+        [self.circlesInTriangles hide];
+        [self.circlesInTriangles remove];
+        [loadBg removeFromSuperview];
+        loadBg = nil;
+
     }
 }
 
@@ -137,4 +168,5 @@
 {
     return 10;
 }
+
 @end

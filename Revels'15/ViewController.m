@@ -8,17 +8,19 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+#import "QuartzCore/CALayer.h"
 #import "ViewController.h"
-#import "StyledPageControl.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 {
     UIView * blurBackgroundView;
     UIView * menuView;
     
-    StyledPageControl *pageControl;         //All this for hiding the blank view behind the page control
     NSUInteger pageIndex;
     PageContentViewController *pageContentViewController;
+    
+    AppDelegate * appDelegate;
 }
 
 @end
@@ -30,6 +32,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     _pageTitles = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
     //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
@@ -43,29 +46,26 @@
     
     // Change the size of page view controller
     self.pageViewController.delegate = self;
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 37);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
+    
+    // Set page control values
+    _pageControl.numberOfPages = [_pageTitles count];
+    _pageControl.currentPage = 0;
+
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMenuOptions)];
     
-    self.view.backgroundColor = [UIColor yellowColor];
     
-    
-    //All this for hiding the blank view behind the page control
-    pageControl = [[StyledPageControl alloc] init];
-    [self.view addSubview:pageControl];
-    pageControl.frame = CGRectMake(0, self.view.frame.size.height-75, self.view.frame.size.width, 100);
-    [pageControl setCoreNormalColor:[UIColor grayColor]];
-    [pageControl setCoreSelectedColor:UIColorFromRGB(0x009589)];
-    [pageControl setPageControlStyle:PageControlStyleDefault];
-    [pageControl setNumberOfPages:(int)[_pageTitles count]];
-    [pageControl setCurrentPage:0];
-    [pageControl setDiameter:10];
-    
-    
+   // For Shadow Below the Navigation Bar
+    self.navigationController.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.navigationController.navigationBar.layer.shadowRadius = 4.0f;
+    self.navigationController.navigationBar.layer.shadowOpacity = 1.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,6 +146,7 @@
     }
     
     index--;
+
     return [self viewControllerAtIndex:index];
 }
 
@@ -161,6 +162,7 @@
     if (index == [self.pageTitles count]) {
         return nil;
     }
+
     return [self viewControllerAtIndex:index];
 }
 
@@ -174,17 +176,19 @@
     pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     pageContentViewController.titleText = self.pageTitles[index];
     pageContentViewController.pageIndex = index;
-    pageIndex = index;
     
     return pageContentViewController;
 }
 
-//All this for hiding the blank view behind the page control
+-(void)updatePage
+{
+    _pageControl.currentPage = (long)appDelegate.globalPageIndex;
+}
+
 -(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
     if (finished) {
-        [pageControl setCurrentPage:(int)pageIndex];
-        NSLog(@"%lu",(unsigned long)pageIndex);
+        [self updatePage];
     }
 }
 

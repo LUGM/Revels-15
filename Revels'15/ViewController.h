@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "PageContentViewController.h"
 
-@interface ViewController : UIViewController <UIPageViewControllerDataSource,UIPageViewControllerDelegate>
+@interface ViewController : UIViewController <UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIScrollViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageTitles;
 
+-(void)updatePage;
 
 @end
 
