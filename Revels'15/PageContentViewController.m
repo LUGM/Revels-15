@@ -38,6 +38,7 @@
     // Do any additional setup after loading the view.
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
+    self.view.frame = CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height);
     
     loadBg = [[UIView alloc]initWithFrame:self.view.frame];
     loadBg.backgroundColor = UIColorFromRGB(0x009589);
@@ -51,7 +52,7 @@
     self.view.backgroundColor = UIColorFromRGB(0xf2f2f2);
     myTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:myTableView];
-    myTableView.contentInset = UIEdgeInsetsMake(64, 0, 35, 0);
+    myTableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
@@ -64,12 +65,6 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-//    ViewController * controller = [[ViewController alloc]init];
-//    [controller updatePage];
-    appDelegate.globalPageIndex = (int*)_pageIndex;
-}
 
 -(void)jsonRequestDidCompleteWithDict:(NSArray *)dict model:(SSJSONModel *)JSONModel
 {

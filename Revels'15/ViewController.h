@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "PageContentViewController.h"
+#import "ViewPagerController.h"
 
-@interface ViewController : UIViewController <UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIScrollViewDelegate>
-
-@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@interface ViewController : ViewPagerController
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageTitles;
-
--(void)updatePage;
 
 @end
 

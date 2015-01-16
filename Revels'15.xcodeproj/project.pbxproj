@@ -21,6 +21,7 @@
 		A32AB5F51A5C40F600787CCD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F41A5C40F600787CCD /* MBProgressHUD.m */; };
 		A32AB5F91A5C414A00787CCD /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */; };
 		A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */; };
+		A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A35D35961A68409C008CFF49 /* ViewPagerController.m */; };
 		A3711F8D1A67E7380021A926 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = A3711F891A67E7380021A926 /* PQFCirclesInTriangle.m */; };
 		A3711F901A67E7B60021A926 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A3711F8F1A67E7B60021A926 /* UIColor+FlatColors.m */; };
 		A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */; };
@@ -63,6 +64,8 @@
 		A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		A32AB5FA1A5C41F100787CCD /* SSJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSJSONModel.h; sourceTree = "<group>"; };
 		A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSJSONModel.m; sourceTree = "<group>"; };
+		A35D35951A68409C008CFF49 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
+		A35D35961A68409C008CFF49 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		A3711F881A67E7380021A926 /* PQFCirclesInTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCirclesInTriangle.h; sourceTree = "<group>"; };
 		A3711F891A67E7380021A926 /* PQFCirclesInTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFCirclesInTriangle.m; sourceTree = "<group>"; };
 		A3711F8A1A67E7380021A926 /* PQFCustomLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCustomLoaders.h; sourceTree = "<group>"; };
@@ -213,11 +216,21 @@
 		A3554BBA1A55BADC0069896C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A35D35941A68409C008CFF49 /* ICViewPager */,
 				A3711F831A67E7380021A926 /* PQFCustomLoaders */,
 				A32AB5FD1A5C41FE00787CCD /* SSJSONParse */,
 				A32AB5F61A5C410100787CCD /* MBProgressHUD */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A35D35941A68409C008CFF49 /* ICViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				A35D35951A68409C008CFF49 /* ViewPagerController.h */,
+				A35D35961A68409C008CFF49 /* ViewPagerController.m */,
+			);
+			path = ICViewPager;
 			sourceTree = "<group>";
 		};
 		A3711F831A67E7380021A926 /* PQFCustomLoaders */ = {
@@ -364,6 +377,7 @@
 				A3162DCD1A52D98D007F7010 /* AppDelegate.m in Sources */,
 				A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */,
 				A3711F8D1A67E7380021A926 /* PQFCirclesInTriangle.m in Sources */,
+				A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */,
 				A3162DCA1A52D98D007F7010 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
