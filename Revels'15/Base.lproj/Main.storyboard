@@ -24,6 +24,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="MPy-DK-caf" kind="presentation" identifier="follow" id="aL4-Ra-PBW"/>
+                        <segue destination="tFC-t3-AYJ" kind="presentation" identifier="showInstafeed" id="Vrc-gg-HJa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -47,17 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="643-Yz-WWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071" y="-292"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="SqI-Gm-H7o">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gwS-4H-dXh" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3LW-HQ-vBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1467" y="-37"/>
+            <point key="canvasLocation" x="1507" y="-318"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="BMh-Rh-sKt">
@@ -77,7 +68,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2r-se-7Yc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1467" y="603"/>
+            <point key="canvasLocation" x="1507" y="370"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="O1a-EM-CKT">
+            <objects>
+                <navigationController id="tFC-t3-AYJ" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6ba-oK-3fs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="um1-nA-5ra" kind="relationship" relationship="rootViewController" id="Nq4-kt-uHx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JnE-JD-PNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="1062"/>
+        </scene>
+        <!--Instafeed View Controller-->
+        <scene sceneID="nVN-HD-uAZ">
+            <objects>
+                <viewController id="um1-nA-5ra" customClass="InstafeedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RI2-74-rFm"/>
+                        <viewControllerLayoutGuide type="bottom" id="wX0-6Z-j26"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gBn-gR-U6t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uFV-BP-249"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSy-zO-Hn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507" y="1062"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HF3-uu-2FQ">

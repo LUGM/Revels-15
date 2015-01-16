@@ -12,7 +12,6 @@
 #import "EventTableViewCell.h"
 #import "SSJSONModel.h"
 #import "Event.h"
-#import "MBProgressHUD.h"
 #import "PQFCirclesInTriangle.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
@@ -22,7 +21,6 @@
     UITableView * myTableView;
     SSJSONModel * jsonReq;
     NSMutableArray * mainArray;
-    MBProgressHUD * hud;
     UIView * loadBg;
     AppDelegate * appDelegate;
 
@@ -48,6 +46,7 @@
     myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
+    myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.view.backgroundColor = UIColorFromRGB(0xf2f2f2);
     myTableView.backgroundColor = [UIColor clearColor];
@@ -57,6 +56,7 @@
     
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
+    
 //    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    hud.labelText = @"Loading";
 //    hud.dimBackground = YES;

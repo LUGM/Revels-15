@@ -11,14 +11,19 @@
 #import "QuartzCore/CALayer.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "SSJSONModel.h"
+#import "Categories.h"
 
-@interface ViewController ()  <ViewPagerDataSource,ViewPagerDelegate>
+@interface ViewController ()  <ViewPagerDataSource,ViewPagerDelegate,SSJSONModelDelegate>
 {
     UIView * blurBackgroundView;
     UIView * menuView;
     
     NSUInteger pageIndex;
     PageContentViewController *pageContentViewController;
+    
+    NSMutableArray * categoryArray;
+    SSJSONModel * jsonReq;
     
     AppDelegate * appDelegate;
 }
@@ -35,6 +40,7 @@
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
     //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle
+    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
 //    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -56,10 +62,10 @@
     // Set page control values
 //    _pageControl.numberOfPages = [_pageTitles count];
 //    _pageControl.currentPage = 0;
-
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMenuOptions)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(showMenuOptions)];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Instagram"] style:UIBarButtonItemStylePlain target:self action:@selector(showInstaFeed)];
     
    // For Shadow Below the Navigation Bar
     self.navigationController.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -74,6 +80,10 @@
     self.delegate = self;
     
     self.title = @"Revels'15";
+    
+    jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/categories/"]];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -82,6 +92,25 @@
     
     [self performSelector:@selector(loadContent) withObject:nil afterDelay:3.0];
     
+}
+
+-(void)jsonRequestDidCompleteWithDict:(NSDictionary *)dict model:(SSJSONModel *)JSONModel
+{
+    if (JSONModel == jsonReq) {
+        NSLog(@"dict is %@",dict);
+        categoryArray = [[NSMutableArray alloc]init];
+        for (NSDictionary *dictionary in [dict objectForKey:@"data"] ) {
+            Categories * categs = [[Categories alloc]initWithDictionary:dictionary];
+            [categoryArray addObject:categs];
+        }
+    }
+    
+    [self reloadData];
+}
+
+-(void)showInstaFeed
+{
+    [self performSegueWithIdentifier:@"showInstafeed" sender:self];
 }
 
 #pragma mark - Setters
@@ -121,10 +150,12 @@
 }
 - (UIView *)viewPager:(ViewPagerController *)viewPager viewForTabAtIndex:(NSUInteger)index {
     
+    Categories * categ = [categoryArray objectAtIndex:index];
+    
     UILabel *label = [UILabel new];
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:12.0];
-    label.text = [NSString stringWithFormat:@"Tab #%lu", (unsigned long)index];
+    label.text = categ.category;
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     [label sizeToFit];
