@@ -14,6 +14,7 @@
 @property (nonatomic,strong) NSString *location;
 @property (nonatomic,strong) NSString *start;
 @property (nonatomic,strong) NSString *stop;
+@property (nonatomic,strong) NSString *desc;
 
 @property(nonatomic,strong) NSDictionary *mainDictionary;
 

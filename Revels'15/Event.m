@@ -18,6 +18,7 @@
         self.location = [dict objectForKey:@"location"];
         self.start = [dict objectForKey:@"start"];
         self.stop = [dict objectForKey:@"stop"];
+        self.desc = [dict objectForKey:@"description"];
     }
     return self;
 }

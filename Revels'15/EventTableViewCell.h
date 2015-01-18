@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventStartTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventStopTimeLabel;
 
+
 @end

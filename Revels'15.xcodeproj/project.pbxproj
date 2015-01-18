@@ -28,6 +28,8 @@
 		A3AFE2121A69576600E86323 /* InstaFeedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE2111A69576600E86323 /* InstaFeedImage.m */; };
 		A3BBF9F51A693D8D00E63308 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BBF9F41A693D8D00E63308 /* Categories.m */; };
 		A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BBF9F71A69539B00E63308 /* instacell.xib */; };
+		A3E07C561A6C21C400CB1420 /* CellOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3E07C551A6C21C400CB1420 /* CellOptionView.xib */; };
+		A3E07C591A6C25BD00CB1420 /* CellOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E07C581A6C25BD00CB1420 /* CellOptionView.m */; };
 		A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */; };
 		A3EA5E801A554355001DA8FD /* MenuOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EA5E7F1A554355001DA8FD /* MenuOptions.m */; };
 		A3EE34EB1A69748000BAB7AE /* InstafeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE34EA1A69748000BAB7AE /* InstafeedViewController.m */; };
@@ -101,6 +103,9 @@
 		A3BBF9F31A693D8D00E63308 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		A3BBF9F41A693D8D00E63308 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
 		A3BBF9F71A69539B00E63308 /* instacell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = instacell.xib; sourceTree = "<group>"; };
+		A3E07C551A6C21C400CB1420 /* CellOptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellOptionView.xib; sourceTree = "<group>"; };
+		A3E07C571A6C25BD00CB1420 /* CellOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellOptionView.h; sourceTree = "<group>"; };
+		A3E07C581A6C25BD00CB1420 /* CellOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellOptionView.m; sourceTree = "<group>"; };
 		A3EA5E7C1A5542A2001DA8FD /* MenuOptions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuOptions.xib; sourceTree = "<group>"; };
 		A3EA5E7E1A554355001DA8FD /* MenuOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuOptions.h; sourceTree = "<group>"; };
 		A3EA5E7F1A554355001DA8FD /* MenuOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuOptions.m; sourceTree = "<group>"; };
@@ -207,6 +212,7 @@
 		A3162DC71A52D98D007F7010 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3E07C4F1A6C1F9400CB1420 /* Resources */,
 				A3162DCB1A52D98D007F7010 /* AppDelegate.h */,
 				A3162DCC1A52D98D007F7010 /* AppDelegate.m */,
 				A3162DC81A52D98D007F7010 /* Info.plist */,
@@ -250,6 +256,7 @@
 		A319A5901A532027004BD5DA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3E07C541A6C218100CB1420 /* CellOptionView */,
 				A3BBF9F61A69537800E63308 /* Instafeed Cells */,
 				A3EA5E7B1A554288001DA8FD /* MenuOptions */,
 				A3EA5E7A1A554270001DA8FD /* EventCell */,
@@ -339,6 +346,23 @@
 				A3AFE2071A6955B100E86323 /* InstaFeedTableViewCell.m */,
 			);
 			name = "Instafeed Cells";
+			sourceTree = "<group>";
+		};
+		A3E07C4F1A6C1F9400CB1420 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A3E07C541A6C218100CB1420 /* CellOptionView */ = {
+			isa = PBXGroup;
+			children = (
+				A3E07C551A6C21C400CB1420 /* CellOptionView.xib */,
+				A3E07C571A6C25BD00CB1420 /* CellOptionView.h */,
+				A3E07C581A6C25BD00CB1420 /* CellOptionView.m */,
+			);
+			name = CellOptionView;
 			sourceTree = "<group>";
 		};
 		A3EA5E7A1A554270001DA8FD /* EventCell */ = {
@@ -483,6 +507,7 @@
 			files = (
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
 				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
+				A3E07C561A6C21C400CB1420 /* CellOptionView.xib in Resources */,
 				A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
 				A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */,
@@ -535,6 +560,7 @@
 				A3EE35111A697F0200BAB7AE /* SDWebImageCompat.m in Sources */,
 				A3EE35171A697F0200BAB7AE /* UIButton+WebCache.m in Sources */,
 				A3EE351B1A697F0200BAB7AE /* UIImageView+HighlightedWebCache.m in Sources */,
+				A3E07C591A6C25BD00CB1420 /* CellOptionView.m in Sources */,
 				A3EE35181A697F0200BAB7AE /* UIImage+GIF.m in Sources */,
 				A3EE35101A697F0200BAB7AE /* SDImageCache.m in Sources */,
 			);

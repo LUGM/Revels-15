@@ -15,6 +15,7 @@
 #import "PQFCirclesInTriangle.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "CellOptionView.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
@@ -25,6 +26,8 @@
     AppDelegate * appDelegate;
 
 }
+
+@property CellOptionView * cellOptionView;
 @property (nonatomic, strong) PQFCirclesInTriangle *circlesInTriangles;
 
 @end
@@ -54,8 +57,49 @@
 //    hud.labelText = @"Loading";
 //    hud.dimBackground = YES;
     
+    if (_cellOptionView == nil) {
+        NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
+        _cellOptionView = [nib objectAtIndex:0];
+    }
 }
 
+
+-(void)openCellOptionView:(Event*)event
+{
+    NSLog(@"%@",event.event);
+    
+    _cellOptionView.frame = CGRectMake(0, self.view.frame.size.height + 110, self.view.frame.size.width-20, _cellOptionView.frame.size.height);
+    _cellOptionView.eventLabel.text = event.event;
+    _cellOptionView.eventDescription.text = event.desc;
+    loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
+//    loadBg.backgroundColor = UIColorFromRGB(0x009589);
+    loadBg.backgroundColor = [UIColor blackColor];
+    loadBg.alpha = 0.0;
+    [loadBg addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeCellMenuView)]];
+    [self.navigationController.view addSubview:loadBg];
+    [self.navigationController.view addSubview:_cellOptionView];
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loadBg.alpha = 0.75;
+        _cellOptionView.center = CGPointMake(self.view.center.x, self.view.center.y+50);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)removeCellMenuView
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loadBg.alpha = 0.0;
+        _cellOptionView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 350);
+    } completion:^(BOOL finished) {
+        [loadBg removeFromSuperview];
+        [_cellOptionView removeFromSuperview];
+        loadBg = nil;
+    }];
+}
+
+# pragma mark - Request
 -(void)sendTheRequest
 {
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
@@ -69,6 +113,7 @@
     self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
     [self.circlesInTriangles show];
 }
+
 
 -(void)jsonRequestDidCompleteWithDict:(NSArray *)dict model:(SSJSONModel *)JSONModel
 {
@@ -92,16 +137,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 #pragma mark- Table View Datasource
 
@@ -135,7 +170,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Event *event = [mainArray objectAtIndex:indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self openCellOptionView:event];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

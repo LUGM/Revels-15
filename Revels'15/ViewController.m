@@ -35,7 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _pageTitles = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"];
     
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
@@ -129,7 +128,7 @@
     [self selectTabAtIndex:5];
 }
 - (void)loadContent {
-    self.numberOfTabs = [_pageTitles count];
+    self.numberOfTabs = [categoryArray count];
 }
 
 - (void)didReceiveMemoryWarning {

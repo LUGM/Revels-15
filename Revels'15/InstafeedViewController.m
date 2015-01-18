@@ -74,7 +74,7 @@
     
     //Send the request
     jsonReq = [[SSJSONModel alloc] initWithDelegate:self];
-    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"https://api.instagram.com/v1/tags/techtatva/media/recent?client_id=cc059e358993470a8dd4e6dfc57119a0"]];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"https://api.instagram.com/v1/tags/revels15/media/recent?client_id=cc059e358993470a8dd4e6dfc57119a0"]];
     
 }
 
