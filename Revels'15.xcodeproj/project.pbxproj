@@ -13,7 +13,6 @@
 		A3162DD01A52D98D007F7010 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DCF1A52D98D007F7010 /* ViewController.m */; };
 		A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3162DD11A52D98D007F7010 /* Main.storyboard */; };
 		A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3162DD41A52D98D007F7010 /* Images.xcassets */; };
-		A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3162DD61A52D98D007F7010 /* LaunchScreen.xib */; };
 		A3162DE41A52D98D007F7010 /* Revels_15Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DE31A52D98D007F7010 /* Revels_15Tests.m */; };
 		A3162DF01A52DB78007F7010 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3162DEF1A52DB78007F7010 /* PageContentViewController.m */; };
 		A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32AB5EB1A5C3D2800787CCD /* EventCell.xib */; };
@@ -48,6 +47,7 @@
 		A3EE351B1A697F0200BAB7AE /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE35091A697F0200BAB7AE /* UIImageView+HighlightedWebCache.m */; };
 		A3EE351C1A697F0200BAB7AE /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE350B1A697F0200BAB7AE /* UIImageView+WebCache.m */; };
 		A3EE351D1A697F0200BAB7AE /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE350D1A697F0200BAB7AE /* UIView+WebCacheOperation.m */; };
+		A3F67F001A6A98660057422B /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,6 @@
 		A3162DCF1A52D98D007F7010 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A3162DD21A52D98D007F7010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3162DD41A52D98D007F7010 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A3162DD71A52D98D007F7010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A3162DDD1A52D98D007F7010 /* Revels'15Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Revels'15Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3162DE21A52D98D007F7010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3162DE31A52D98D007F7010 /* Revels_15Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Revels_15Tests.m; sourceTree = "<group>"; };
@@ -140,6 +139,8 @@
 		A3EE350B1A697F0200BAB7AE /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		A3EE350C1A697F0200BAB7AE /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A3EE350D1A697F0200BAB7AE /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		A3F67EFE1A6A98660057422B /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
+		A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +198,6 @@
 				A3162DED1A52DA35007F7010 /* Controller */,
 				A3162DD11A52D98D007F7010 /* Main.storyboard */,
 				A3162DD41A52D98D007F7010 /* Images.xcassets */,
-				A3162DD61A52D98D007F7010 /* LaunchScreen.xib */,
 				A30141E01A64E8E5006C10C6 /* Frameworks */,
 				A3162DC71A52D98D007F7010 /* Supporting Files */,
 			);
@@ -241,6 +241,8 @@
 				A3162DEF1A52DB78007F7010 /* PageContentViewController.m */,
 				A3EE34E91A69748000BAB7AE /* InstafeedViewController.h */,
 				A3EE34EA1A69748000BAB7AE /* InstafeedViewController.m */,
+				A3F67EFE1A6A98660057422B /* SplashScreenViewController.h */,
+				A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -480,7 +482,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
-				A3162DD81A52D98D007F7010 /* LaunchScreen.xib in Resources */,
 				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
 				A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
@@ -505,6 +506,7 @@
 				A3EE35131A697F0200BAB7AE /* SDWebImageDownloader.m in Sources */,
 				A32AB5F21A5C404400787CCD /* Event.m in Sources */,
 				A3AFE2121A69576600E86323 /* InstaFeedImage.m in Sources */,
+				A3F67F001A6A98660057422B /* SplashScreenViewController.m in Sources */,
 				A3EE35161A697F0200BAB7AE /* SDWebImagePrefetcher.m in Sources */,
 				A3EE351D1A697F0200BAB7AE /* UIView+WebCacheOperation.m in Sources */,
 				A3162DD01A52D98D007F7010 /* ViewController.m in Sources */,
@@ -563,14 +565,6 @@
 				A3162DD21A52D98D007F7010 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A3162DD61A52D98D007F7010 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A3162DD71A52D98D007F7010 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

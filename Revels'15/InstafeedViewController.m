@@ -61,7 +61,6 @@
     self.view.backgroundColor = UIColorFromRGB(0xf2f2f2);
     myTableView.backgroundColor = [UIColor clearColor];
     myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    myTableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
     [self.view addSubview:myTableView];
     
     //Async Loader
@@ -79,6 +78,10 @@
     
 }
 
+-(void)viewDidLayoutSubviews
+{
+    myTableView.contentInset = UIEdgeInsetsMake(64, 0, 10, 0);
+}
 -(void)previousView
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -144,8 +147,8 @@
     cell.userName.text = user.username;
     
     InstaFeedImage * img = [imagesArray objectAtIndex:indexPath.row];
-    [cell.mainImage sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"favicon.jpg"]];
-    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:user.profile_picture] placeholderImage:[UIImage imageNamed:@"favicon.jpg"]];
+    [cell.mainImage sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"logo"]];
+    [cell.userImage sd_setImageWithURL:[NSURL URLWithString:user.profile_picture] placeholderImage:[UIImage imageNamed:@"logo"]];
     
     return cell;
 }
@@ -153,6 +156,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 375;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section

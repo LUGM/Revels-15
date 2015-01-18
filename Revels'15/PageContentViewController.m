@@ -38,11 +38,6 @@
     
     self.view.frame = CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height);
     
-    loadBg = [[UIView alloc]initWithFrame:self.view.frame];
-    loadBg.backgroundColor = UIColorFromRGB(0x009589);
-    loadBg.alpha = 0.75;
-    [self.view addSubview:loadBg];
-    
     myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
@@ -54,17 +49,26 @@
     myTableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
-    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
-    
+    [self sendTheRequest];
 //    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    hud.labelText = @"Loading";
 //    hud.dimBackground = YES;
-    self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
-    [self.circlesInTriangles show];
     
 }
 
+-(void)sendTheRequest
+{
+    jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
+    
+    loadBg = [[UIView alloc]initWithFrame:self.view.frame];
+    loadBg.backgroundColor = UIColorFromRGB(0x009589);
+    loadBg.alpha = 0.75;
+    [self.view addSubview:loadBg];
+    
+    self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+    [self.circlesInTriangles show];
+}
 
 -(void)jsonRequestDidCompleteWithDict:(NSArray *)dict model:(SSJSONModel *)JSONModel
 {
@@ -89,19 +93,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
-{
-    if (motion == UIEventSubtypeMotionShake)
-    {
-        [self willScrollToTop];
-    }
-}
-
--(void)willScrollToTop
-{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-}
 /*
  #pragma mark - Navigation
  
