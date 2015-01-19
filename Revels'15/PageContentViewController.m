@@ -8,6 +8,7 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+#import <CoreData/CoreData.h>
 #import "PageContentViewController.h"
 #import "EventTableViewCell.h"
 #import "SSJSONModel.h"
@@ -16,6 +17,8 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "CellOptionView.h"
+#import "Following.h"
+#import "CoreDataHelper.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
@@ -24,7 +27,7 @@
     NSMutableArray * mainArray;
     UIView * loadBg;
     AppDelegate * appDelegate;
-
+    NSIndexPath * selectedIndex;
 }
 
 @property CellOptionView * cellOptionView;
@@ -53,6 +56,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self sendTheRequest];
+    
 //    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    hud.labelText = @"Loading";
 //    hud.dimBackground = YES;
@@ -63,6 +67,7 @@
     }
 }
 
+#pragma mark - Cell Option View
 
 -(void)openCellOptionView:(Event*)event
 {
@@ -71,6 +76,9 @@
     _cellOptionView.frame = CGRectMake(0, self.view.frame.size.height + 110, self.view.frame.size.width-20, _cellOptionView.frame.size.height);
     _cellOptionView.eventLabel.text = event.event;
     _cellOptionView.eventDescription.text = event.desc;
+    
+    [_cellOptionView.addToFollowingButton addTarget:self action:@selector(addEventToFollowing) forControlEvents:UIControlEventTouchUpInside];
+
     loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
 //    loadBg.backgroundColor = UIColorFromRGB(0x009589);
     loadBg.backgroundColor = [UIColor blackColor];
@@ -133,9 +141,28 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Core Data
+
+-(void)addEventToFollowing
+{
+    NSManagedObjectContext * context = [CoreDataHelper managedObjectContext];
+    
+    Event * event = [mainArray objectAtIndex:selectedIndex.row];
+    
+    Following * followEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Following" inManagedObjectContext:context];
+    
+    followEvent.event = event.event;
+    followEvent.location = event.location;
+    followEvent.start = event.start;
+    followEvent.stop = event.stop;
+    followEvent.desc = event.desc;
+    
+    NSError * error;
+    
+    if (![context save:&error]) {
+        NSLog(@"%@",error);
+    }
+    
 }
 
 #pragma mark- Table View Datasource
@@ -173,6 +200,7 @@
     Event *event = [mainArray objectAtIndex:indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self openCellOptionView:event];
+    selectedIndex = indexPath;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -8,21 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="IG8-OH-BQd" customClass="CellOptionView">
-            <rect key="frame" x="0.0" y="0.0" width="310" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="310" height="384"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-F2-PED">
-                    <rect key="frame" x="97" y="324" width="116" height="30"/>
-                    <state key="normal" title="Add to Following">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOz-kK-puR">
-                    <rect key="frame" x="87" y="362" width="137" height="30"/>
-                    <state key="normal" title="Add to Participating">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KvY-uW-dkM">
                     <rect key="frame" x="0.0" y="0.0" width="310" height="62"/>
                     <subviews>
@@ -45,39 +33,51 @@
                         <constraint firstAttribute="width" constant="310" id="UWV-KW-GGa"/>
                     </constraints>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-Lc-7yX">
-                    <rect key="frame" x="0.0" y="61" width="310" height="255"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="YOLOSWAG" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-Lc-7yX">
+                    <rect key="frame" x="0.0" y="61" width="310" height="261"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="310" id="RQg-O2-xal"/>
-                        <constraint firstAttribute="height" constant="255" id="vEN-0g-pVC"/>
+                        <constraint firstAttribute="height" constant="261" id="jds-gx-hH9"/>
                     </constraints>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                    <color key="textColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="22"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-F2-PED">
+                    <rect key="frame" x="61" y="339" width="188" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="188" id="5ij-PJ-HOQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="ADD TO FOLLOWING">
+                        <color key="titleColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="9Hg-Lc-7yX" firstAttribute="leading" secondItem="IG8-OH-BQd" secondAttribute="leading" id="12N-P2-u4R"/>
-                <constraint firstItem="9Hg-Lc-7yX" firstAttribute="leading" secondItem="KvY-uW-dkM" secondAttribute="trailing" constant="-310" id="6Zj-0x-O3S"/>
+                <constraint firstItem="9Hg-Lc-7yX" firstAttribute="leading" secondItem="KvY-uW-dkM" secondAttribute="leading" id="02R-TU-IGV"/>
+                <constraint firstAttribute="centerX" secondItem="krZ-F2-PED" secondAttribute="centerX" id="IlC-zQ-iss"/>
                 <constraint firstItem="KvY-uW-dkM" firstAttribute="top" secondItem="IG8-OH-BQd" secondAttribute="top" id="NDR-eG-VKM"/>
                 <constraint firstItem="KvY-uW-dkM" firstAttribute="leading" secondItem="IG8-OH-BQd" secondAttribute="leading" id="OBK-3W-icX"/>
-                <constraint firstAttribute="trailing" secondItem="9Hg-Lc-7yX" secondAttribute="trailing" id="Uwp-Ot-MZG"/>
-                <constraint firstAttribute="centerX" secondItem="9Hg-Lc-7yX" secondAttribute="centerX" id="feZ-MK-UlE"/>
-                <constraint firstItem="9Hg-Lc-7yX" firstAttribute="top" secondItem="IG8-OH-BQd" secondAttribute="top" constant="61" id="iXq-1i-eKG"/>
+                <constraint firstItem="9Hg-Lc-7yX" firstAttribute="trailing" secondItem="KvY-uW-dkM" secondAttribute="trailing" id="fDn-sW-GYu"/>
+                <constraint firstAttribute="bottom" secondItem="krZ-F2-PED" secondAttribute="bottom" constant="15" id="h1G-3b-KQd"/>
+                <constraint firstItem="krZ-F2-PED" firstAttribute="top" secondItem="9Hg-Lc-7yX" secondAttribute="bottom" constant="17" id="irB-nc-jyq"/>
                 <constraint firstAttribute="trailing" secondItem="KvY-uW-dkM" secondAttribute="trailing" id="oHZ-oL-KmD"/>
                 <constraint firstAttribute="centerX" secondItem="KvY-uW-dkM" secondAttribute="centerX" id="pOT-Oq-Mfx"/>
+                <constraint firstItem="9Hg-Lc-7yX" firstAttribute="top" secondItem="IG8-OH-BQd" secondAttribute="top" constant="61" id="pcm-gi-Kc9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addToFollowingButton" destination="krZ-F2-PED" id="OPA-a0-Ja1"/>
-                <outlet property="addToParticipatingButton" destination="xOz-kK-puR" id="kIw-eY-PpM"/>
                 <outlet property="eventDescription" destination="9Hg-Lc-7yX" id="b0j-ly-HiA"/>
                 <outlet property="eventLabel" destination="1xW-Q3-XsS" id="KLz-sn-jrY"/>
+                <outlet property="greenView" destination="KvY-uW-dkM" id="cKY-gj-eiA"/>
             </connections>
-            <point key="canvasLocation" x="662" y="326"/>
+            <point key="canvasLocation" x="493" y="313"/>
         </view>
     </objects>
 </document>

@@ -7,7 +7,6 @@
 //
 
 #import "SSJSONModel.h"
-#import "MBProgressHUD.h"
 
 @interface SSJSONModel(){
     

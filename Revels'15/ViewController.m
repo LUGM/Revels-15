@@ -13,11 +13,12 @@
 #import "AppDelegate.h"
 #import "SSJSONModel.h"
 #import "Categories.h"
+#import "MenuOptions.h"
 
 @interface ViewController ()  <ViewPagerDataSource,ViewPagerDelegate,SSJSONModelDelegate>
 {
     UIView * blurBackgroundView;
-    UIView * menuView;
+    MenuOptions * menuView;
     
     NSUInteger pageIndex;
     PageContentViewController *pageContentViewController;
@@ -38,8 +39,7 @@
     
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle
-    
+    //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
 //    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -221,8 +221,9 @@
     [self.navigationController.view addSubview:blurBackgroundView];
     
     NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"MenuOptions" owner:self options:nil];
-    menuView = [[UIView alloc]init];
+    menuView = [[MenuOptions alloc]init];
     menuView = [nib objectAtIndex:0];
+    [menuView.followingButton addTarget:self action:@selector(segueToFollowingTab) forControlEvents:UIControlEventTouchUpInside];
     menuView.center = self.view.center;
     menuView.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height - 50);
     
@@ -270,6 +271,15 @@
         }];
     }
 
+}
+
+
+#pragma mark - Segue Methods
+
+-(void)segueToFollowingTab
+{
+    [self removeBgAndMenuWithdirectionUp:YES];
+    [self performSegueWithIdentifier:@"follow" sender:self];
 }
 
 //#pragma mark - Page View Controller Data Source

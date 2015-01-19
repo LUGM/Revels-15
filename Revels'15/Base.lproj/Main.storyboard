@@ -23,18 +23,18 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="MPy-DK-caf" kind="presentation" identifier="follow" id="aL4-Ra-PBW"/>
                         <segue destination="tFC-t3-AYJ" kind="presentation" identifier="showInstafeed" id="Vrc-gg-HJa"/>
+                        <segue destination="5mo-1N-YJh" kind="presentation" identifier="follow" id="9gs-sY-KBn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1071" y="347"/>
         </scene>
-        <!--View Controller-->
+        <!--Following View Controller-->
         <scene sceneID="GsS-oN-pHf">
             <objects>
-                <viewController id="MPy-DK-caf" sceneMemberID="viewController">
+                <viewController id="MPy-DK-caf" customClass="FollowingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hM6-lT-w7e"/>
                         <viewControllerLayoutGuide type="bottom" id="J4i-QN-iKA"/>
@@ -44,11 +44,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UaI-EU-2l6"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="643-Yz-WWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="-318"/>
+            <point key="canvasLocation" x="2039" y="-318"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="BMh-Rh-sKt">
@@ -68,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2r-se-7Yc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="370"/>
+            <point key="canvasLocation" x="1507" y="347"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="O1a-EM-CKT">
@@ -212,6 +213,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iw7-wj-Aij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="623" y="347"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JWQ-LI-G6c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5mo-1N-YJh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CdP-ZC-Vq2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MPy-DK-caf" kind="relationship" relationship="rootViewController" id="UdB-ev-2pa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sce-dt-Odk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507" y="-318"/>
         </scene>
     </scenes>
     <resources>

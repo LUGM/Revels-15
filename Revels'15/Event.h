@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSString *start;
 @property (nonatomic,strong) NSString *stop;
 @property (nonatomic,strong) NSString *desc;
+@property (nonatomic,strong) NSString * day;
 
 @property(nonatomic,strong) NSDictionary *mainDictionary;
 

@@ -10,4 +10,6 @@
 
 @interface MenuOptions : UIView
 
+@property (weak, nonatomic) IBOutlet UIButton *followingButton;
+
 @end
