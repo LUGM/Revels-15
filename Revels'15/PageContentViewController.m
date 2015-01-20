@@ -28,6 +28,8 @@
     UIView * loadBg;
     AppDelegate * appDelegate;
     NSIndexPath * selectedIndex;
+    
+    UIRefreshControl * refreshControl;
 }
 
 @property CellOptionView * cellOptionView;
@@ -55,6 +57,17 @@
     myTableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    //Add pull to refresh
+    refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.tintColor = [UIColor blackColor];
+    refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    NSAttributedString * attributeString = [[NSAttributedString alloc]initWithString:@"Loading"];
+    refreshControl.attributedTitle = attributeString;
+    [refreshControl addTarget:self
+                       action:@selector(sendTheRequest)
+             forControlEvents:UIControlEventValueChanged];
+    [myTableView addSubview:refreshControl];
+
     [self sendTheRequest];
     
 //    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -137,7 +150,7 @@
         [self.circlesInTriangles remove];
         [loadBg removeFromSuperview];
         loadBg = nil;
-
+        [refreshControl endRefreshing];
     }
 }
 
@@ -145,9 +158,26 @@
 
 -(void)addEventToFollowing
 {
-    NSManagedObjectContext * context = [CoreDataHelper managedObjectContext];
+    
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Following"];
+    NSError * error = nil;
     
     Event * event = [mainArray objectAtIndex:selectedIndex.row];
+    NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    BOOL isPresent = NO;
+    
+    for (int i =0; i<[fetchedArray count]; i++) {
+        Event * checkEvent = [fetchedArray objectAtIndex:i];
+        if ([checkEvent.event isEqualToString:event.event]) {
+            UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Event Already Present\nin Following List" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+            isPresent = YES;
+            break;
+        }
+    }
+
+    if (!isPresent) {
+    NSManagedObjectContext * context = [CoreDataHelper managedObjectContext];
     
     Following * followEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Following" inManagedObjectContext:context];
     
@@ -157,12 +187,10 @@
     followEvent.stop = event.stop;
     followEvent.desc = event.desc;
     
-    NSError * error;
-    
     if (![context save:&error]) {
         NSLog(@"%@",error);
     }
-    
+    }
 }
 
 #pragma mark- Table View Datasource

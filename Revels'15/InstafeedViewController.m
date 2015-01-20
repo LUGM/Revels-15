@@ -27,6 +27,8 @@
     UITableView * myTableView;
     UIView * loadBg;
     
+    UIRefreshControl * refreshControl;
+    
 }
 @property (nonatomic, strong) PQFCirclesInTriangle *circlesInTriangles;
 
@@ -40,7 +42,7 @@
     
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
-    self.title = @"#revels15";
+    self.title = @"#Revels15";
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(previousView)];
     
@@ -63,6 +65,18 @@
     myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:myTableView];
     
+    //Add pull to refresh
+    refreshControl = [[UIRefreshControl alloc]init];
+    refreshControl.tintColor = [UIColor blackColor];
+    refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    NSAttributedString * attributeString = [[NSAttributedString alloc]initWithString:@"Loading"];
+    refreshControl.attributedTitle = attributeString;
+    [refreshControl addTarget:self
+                       action:@selector(sendTheRequest)
+             forControlEvents:UIControlEventValueChanged];
+    [myTableView addSubview:refreshControl];
+
+    
     //Async Loader
     loadBg = [[UIView alloc]initWithFrame:self.view.frame];
     loadBg.backgroundColor = UIColorFromRGB(0x009589);
@@ -70,12 +84,17 @@
     [self.view addSubview:loadBg];
     self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
     [self.circlesInTriangles show];
-
     
+    [self sendTheRequest];
+
+}
+
+-(void)sendTheRequest
+{
     //Send the request
     jsonReq = [[SSJSONModel alloc] initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"https://api.instagram.com/v1/tags/revels15/media/recent?client_id=cc059e358993470a8dd4e6dfc57119a0"]];
-    
+
 }
 
 -(void)viewDidLayoutSubviews
@@ -103,6 +122,8 @@
             [userArray addObject:user];
             InstaFeedImage * img = [[InstaFeedImage alloc]initWithDictionary:[[dictionary objectForKey:@"images"] objectForKey:@"low_resolution"]];
             [imagesArray addObject:img];
+            [refreshControl endRefreshing];
+            [self viewDidLayoutSubviews];
         }
         [myTableView reloadData];
         [self.circlesInTriangles hide];

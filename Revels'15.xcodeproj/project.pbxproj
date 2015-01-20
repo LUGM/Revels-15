@@ -27,6 +27,7 @@
 		A3AFE2121A69576600E86323 /* InstaFeedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE2111A69576600E86323 /* InstaFeedImage.m */; };
 		A3BBF9F51A693D8D00E63308 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BBF9F41A693D8D00E63308 /* Categories.m */; };
 		A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BBF9F71A69539B00E63308 /* instacell.xib */; };
+		A3C6C5301A6E1A7900BB66B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C52F1A6E1A7900BB66B1 /* MBProgressHUD.m */; };
 		A3DC74191A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3DC74171A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodeld */; };
 		A3DC74231A6D435B00B3ACBA /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DC74221A6D435B00B3ACBA /* CoreDataHelper.m */; };
 		A3DC74261A6D44C100B3ACBA /* Following.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DC74251A6D44C100B3ACBA /* Following.m */; };
@@ -105,6 +106,8 @@
 		A3BBF9F31A693D8D00E63308 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		A3BBF9F41A693D8D00E63308 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
 		A3BBF9F71A69539B00E63308 /* instacell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = instacell.xib; sourceTree = "<group>"; };
+		A3C6C52E1A6E1A7900BB66B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A3C6C52F1A6E1A7900BB66B1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A3DC74181A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Revels_CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A3DC74211A6D435B00B3ACBA /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		A3DC74221A6D435B00B3ACBA /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 		A3554BBA1A55BADC0069896C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A3C6C5311A6E1A7F00BB66B1 /* MBProgressHUD */,
 				A3EE34EC1A697F0200BAB7AE /* SDWebImage */,
 				A35D35941A68409C008CFF49 /* ICViewPager */,
 				A3711F831A67E7380021A926 /* PQFCustomLoaders */,
@@ -351,6 +355,15 @@
 				A3AFE2071A6955B100E86323 /* InstaFeedTableViewCell.m */,
 			);
 			name = "Instafeed Cells";
+			sourceTree = "<group>";
+		};
+		A3C6C5311A6E1A7F00BB66B1 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A3C6C52E1A6E1A7900BB66B1 /* MBProgressHUD.h */,
+				A3C6C52F1A6E1A7900BB66B1 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		A3DC741A1A6D42FD00B3ACBA /* CoreData */ = {
@@ -567,6 +580,7 @@
 				A3BBF9F51A693D8D00E63308 /* Categories.m in Sources */,
 				A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */,
 				A3711F8D1A67E7380021A926 /* PQFCirclesInTriangle.m in Sources */,
+				A3C6C5301A6E1A7900BB66B1 /* MBProgressHUD.m in Sources */,
 				A3EE350F1A697F0200BAB7AE /* NSData+ImageContentType.m in Sources */,
 				A3AFE20E1A69566300E86323 /* InstaFeedUser.m in Sources */,
 				A3AFE2081A6955B100E86323 /* InstaFeedTableViewCell.m in Sources */,

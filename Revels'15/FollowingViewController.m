@@ -13,11 +13,12 @@
 #import "Following.h"
 #import "EventTableViewCell.h"
 #import "Event.h"
+#import "CoreDataHelper.h"
 
 @interface FollowingViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     UITableView * myTableView;
-    NSArray * mainArray;
+    NSMutableArray * mainArray;
 }
 
 @end
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"Following";
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
     myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
@@ -55,7 +57,7 @@
     NSError * error = nil;
     
     NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    
+    mainArray = [[NSMutableArray alloc]init];
     mainArray = [fetchedArray mutableCopy];
     
     [myTableView reloadData];
@@ -110,6 +112,46 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 200;
+}
+
+
+// Methods For Deleting
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSUInteger row = [indexPath row];
+    NSUInteger count = [mainArray count];
+    
+    if (row < count) {
+        return UITableViewCellEditingStyleDelete;
+    } else {
+        return UITableViewCellEditingStyleNone;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSUInteger row = [indexPath row];
+    NSUInteger count = [mainArray count];
+    
+    if (row < count) {
+        Following * deleteFollowEvent = [mainArray objectAtIndex:row];
+        [mainArray removeObjectAtIndex:row];
+        [[CoreDataHelper managedObjectContext] deleteObject:deleteFollowEvent];
+        NSError * error;
+        if (![[CoreDataHelper managedObjectContext] save:&error]) {
+            NSLog(@"Error : %@",error);
+        }
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone] ;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView reloadData];
 }
 
 @end

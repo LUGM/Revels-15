@@ -14,6 +14,7 @@
 #import "SSJSONModel.h"
 #import "Categories.h"
 #import "MenuOptions.h"
+#import "MBProgressHUD.h"
 
 @interface ViewController ()  <ViewPagerDataSource,ViewPagerDelegate,SSJSONModelDelegate>
 {
@@ -27,6 +28,8 @@
     SSJSONModel * jsonReq;
     
     AppDelegate * appDelegate;
+    
+    MBProgressHUD * hud;
 }
 @property (nonatomic) NSUInteger numberOfTabs;
 @end
@@ -82,7 +85,8 @@
     
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/categories/"]];
-    
+    hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.dimBackground = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -101,6 +105,7 @@
         for (NSDictionary *dictionary in [dict objectForKey:@"data"] ) {
             Categories * categs = [[Categories alloc]initWithDictionary:dictionary];
             [categoryArray addObject:categs];
+            [hud hide:YES];
         }
     }
     
