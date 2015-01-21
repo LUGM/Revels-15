@@ -11,7 +11,7 @@
 #import "PageContentViewController.h"
 #import "ViewPagerController.h"
 
-@interface ViewController : ViewPagerController
+@interface ViewController : ViewPagerController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSArray *pageTitles;

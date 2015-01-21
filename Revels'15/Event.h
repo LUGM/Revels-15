@@ -15,7 +15,11 @@
 @property (nonatomic,strong) NSString *start;
 @property (nonatomic,strong) NSString *stop;
 @property (nonatomic,strong) NSString *desc;
-@property (nonatomic,strong) NSString * day;
+@property (nonatomic,strong) NSNumber * day;
+@property (nonatomic,strong) NSString * categ;
+@property (nonatomic,strong) NSString * date;
+@property (nonatomic, retain) NSString * prerevels;
+@property (nonatomic, retain) NSString * contact;
 
 @property(nonatomic,strong) NSDictionary *mainDictionary;
 

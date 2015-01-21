@@ -15,6 +15,10 @@
 #import "Categories.h"
 #import "MenuOptions.h"
 #import "MBProgressHUD.h"
+#import "Reachability.h"
+#import "SavedCategory.h"
+#import "CoreDataHelper.h"
+
 
 @interface ViewController ()  <ViewPagerDataSource,ViewPagerDelegate,SSJSONModelDelegate>
 {
@@ -29,7 +33,9 @@
     
     AppDelegate * appDelegate;
     
+    UIAlertView *connectionAlert;
     MBProgressHUD * hud;
+    
 }
 @property (nonatomic) NSUInteger numberOfTabs;
 @end
@@ -44,26 +50,6 @@
     
     //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    
-//    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
-//    self.pageViewController.dataSource = self;
-//    
-//    PageContentViewController *startingViewController = [self viewControllerAtIndex:0];
-//    NSArray *viewControllers = @[startingViewController];
-//    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    // Change the size of page view controller
-//    self.pageViewController.delegate = self;
-//    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 37);
-    
-//    [self addChildViewController:_pageViewController];
-//    [self.view addSubview:_pageViewController.view];
-//    [self.pageViewController didMoveToParentViewController:self];
-    
-    
-    // Set page control values
-//    _pageControl.numberOfPages = [_pageTitles count];
-//    _pageControl.currentPage = 0;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"menu"] style:UIBarButtonItemStylePlain target:self action:@selector(showMenuOptions)];
     
@@ -83,10 +69,9 @@
     
     self.title = @"Revels'15";
     
-    jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
-    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/categories/"]];
-    hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.dimBackground = YES;
+    
+    [self getTheData];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -97,6 +82,39 @@
     
 }
 
+#pragma mark - Get the data
+
+-(void)getTheData
+{
+    hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.dimBackground = YES;
+    if ([self connected]) {
+    jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/categories/"]];
+    }
+    else
+    {
+        NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedCategory"];
+        NSError *error;
+        NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
+
+        if (count == 0) {
+            connectionAlert = [[UIAlertView alloc]initWithTitle:@"No Network" message:@"Check your Network Settings\nand try again" delegate:self cancelButtonTitle:@"Reload" otherButtonTitles:nil, nil];
+            [connectionAlert show];
+            [hud hide:YES];
+        }
+        else{
+            categoryArray = [[NSMutableArray alloc]init];
+            categoryArray = [fetchedArray mutableCopy];
+            [hud hide:YES];
+            [self reloadData];
+        }
+        
+    }
+
+}
+
 -(void)jsonRequestDidCompleteWithDict:(NSDictionary *)dict model:(SSJSONModel *)JSONModel
 {
     if (JSONModel == jsonReq) {
@@ -105,6 +123,17 @@
         for (NSDictionary *dictionary in [dict objectForKey:@"data"] ) {
             Categories * categs = [[Categories alloc]initWithDictionary:dictionary];
             [categoryArray addObject:categs];
+            NSManagedObjectContext * context = [CoreDataHelper managedObjectContext];
+            SavedCategory * savedCat = [NSEntityDescription insertNewObjectForEntityForName:@"SavedCategory" inManagedObjectContext:context];
+            savedCat.category = categs.category;
+            savedCat.category_code = categs.category_code;
+            savedCat.desc = categs.desc;
+            savedCat.version = categs.version;
+            NSError * error;
+            if (![context save:&error]) {
+                NSLog(@"Error :%@",error);
+            }
+            
             [hud hide:YES];
         }
     }
@@ -112,11 +141,26 @@
     [self reloadData];
 }
 
--(void)showInstaFeed
+// Internet Connection Check Method
+- (BOOL)connected
 {
-    [self performSegueWithIdentifier:@"showInstafeed" sender:self];
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
 }
 
+
+
+#pragma mark - Alert View Delegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (alertView == connectionAlert) {
+        if (buttonIndex == 0) {
+            [self getTheData];
+        }
+    }
+    
+}
 #pragma mark - Setters
 - (void)setNumberOfTabs:(NSUInteger)numberOfTabs {
     
@@ -129,9 +173,6 @@
 }
 
 #pragma mark - Helpers
-- (void)selectTabWithNumberFive {
-    [self selectTabAtIndex:5];
-}
 - (void)loadContent {
     self.numberOfTabs = [categoryArray count];
 }
@@ -287,61 +328,11 @@
     [self performSegueWithIdentifier:@"follow" sender:self];
 }
 
-//#pragma mark - Page View Controller Data Source
-//
-//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-//{
-//    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
-//    
-//    if ((index == 0) || (index == NSNotFound)) {
-//        return nil;
-//    }
-//    
-//    index--;
-//
-//    return [self viewControllerAtIndex:index];
-//}
-//
-//- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-//{
-//    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
-//    
-//    if (index == NSNotFound) {
-//        return nil;
-//    }
-//    
-//    index++;
-//    if (index == [self.pageTitles count]) {
-//        return nil;
-//    }
-//
-//    return [self viewControllerAtIndex:index];
-//}
-//
-//- (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
-//{
-//    if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
-//        return nil;
-//    }
-//    
-//    // Create a new view controller and pass suitable data.
-//    pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-//    pageContentViewController.titleText = self.pageTitles[index];
-//    pageContentViewController.pageIndex = index;
-//    
-//    return pageContentViewController;
-//}
-//
-//-(void)updatePage
-//{
-//    _pageControl.currentPage = (long)appDelegate.globalPageIndex;
-//}
-//
-//-(void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
-//{
-//    if (finished) {
-//        [self updatePage];
-//    }
-//}
+#pragma mark - Segue to other View Controllers
+
+-(void)showInstaFeed
+{
+    [self performSegueWithIdentifier:@"showInstafeed" sender:self];
+}
 
 @end

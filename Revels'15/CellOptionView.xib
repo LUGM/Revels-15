@@ -45,14 +45,15 @@
                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-F2-PED">
-                    <rect key="frame" x="61" y="339" width="188" height="30"/>
+                    <rect key="frame" x="37" y="336" width="237" height="40"/>
+                    <color key="backgroundColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="188" id="5ij-PJ-HOQ"/>
+                        <constraint firstAttribute="width" constant="237" id="5ij-PJ-HOQ"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="ADD TO FOLLOWING">
-                        <color key="titleColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
@@ -63,8 +64,8 @@
                 <constraint firstItem="KvY-uW-dkM" firstAttribute="top" secondItem="IG8-OH-BQd" secondAttribute="top" id="NDR-eG-VKM"/>
                 <constraint firstItem="KvY-uW-dkM" firstAttribute="leading" secondItem="IG8-OH-BQd" secondAttribute="leading" id="OBK-3W-icX"/>
                 <constraint firstItem="9Hg-Lc-7yX" firstAttribute="trailing" secondItem="KvY-uW-dkM" secondAttribute="trailing" id="fDn-sW-GYu"/>
-                <constraint firstAttribute="bottom" secondItem="krZ-F2-PED" secondAttribute="bottom" constant="15" id="h1G-3b-KQd"/>
-                <constraint firstItem="krZ-F2-PED" firstAttribute="top" secondItem="9Hg-Lc-7yX" secondAttribute="bottom" constant="17" id="irB-nc-jyq"/>
+                <constraint firstAttribute="bottom" secondItem="krZ-F2-PED" secondAttribute="bottom" constant="8" id="h1G-3b-KQd"/>
+                <constraint firstItem="krZ-F2-PED" firstAttribute="top" secondItem="9Hg-Lc-7yX" secondAttribute="bottom" constant="14" id="irB-nc-jyq"/>
                 <constraint firstAttribute="trailing" secondItem="KvY-uW-dkM" secondAttribute="trailing" id="oHZ-oL-KmD"/>
                 <constraint firstAttribute="centerX" secondItem="KvY-uW-dkM" secondAttribute="centerX" id="pOT-Oq-Mfx"/>
                 <constraint firstItem="9Hg-Lc-7yX" firstAttribute="top" secondItem="IG8-OH-BQd" secondAttribute="top" constant="61" id="pcm-gi-Kc9"/>

@@ -13,7 +13,6 @@
 #import "Following.h"
 #import "EventTableViewCell.h"
 #import "Event.h"
-#import "CoreDataHelper.h"
 
 @interface FollowingViewController () <UITableViewDataSource,UITableViewDelegate>
 {
@@ -144,7 +143,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         if (![[CoreDataHelper managedObjectContext] save:&error]) {
             NSLog(@"Error : %@",error);
         }
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone] ;
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft] ;
     }
 }
 

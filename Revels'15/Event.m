@@ -21,7 +21,9 @@
         self.stop = [dict objectForKey:@"stop"];
         self.desc = [dict objectForKey:@"description"];
         self.day = [dict objectForKey:@"day"];
-        
+        self.categ = [dict objectForKey:@"category"];
+        self.date = [dict objectForKey:@"date"];
+        self.prerevels = [dict objectForKey:@"prerevels"];
     }
     return self;
 }

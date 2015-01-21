@@ -19,6 +19,8 @@
 #import "CellOptionView.h"
 #import "Following.h"
 #import "CoreDataHelper.h"
+#import "SavedEvent.h"
+#import "Reachability.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
@@ -30,6 +32,7 @@
     NSIndexPath * selectedIndex;
     
     UIRefreshControl * refreshControl;
+    UIAlertView * connectionAlert;
 }
 
 @property CellOptionView * cellOptionView;
@@ -57,22 +60,17 @@
     myTableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    
     //Add pull to refresh
     refreshControl = [[UIRefreshControl alloc]init];
     refreshControl.tintColor = [UIColor blackColor];
     refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    NSAttributedString * attributeString = [[NSAttributedString alloc]initWithString:@"Loading"];
-    refreshControl.attributedTitle = attributeString;
     [refreshControl addTarget:self
-                       action:@selector(sendTheRequest)
+                       action:@selector(getData)
              forControlEvents:UIControlEventValueChanged];
     [myTableView addSubview:refreshControl];
 
-    [self sendTheRequest];
-    
-//    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    hud.labelText = @"Loading";
-//    hud.dimBackground = YES;
+    [self getData];
     
     if (_cellOptionView == nil) {
         NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
@@ -93,7 +91,6 @@
     [_cellOptionView.addToFollowingButton addTarget:self action:@selector(addEventToFollowing) forControlEvents:UIControlEventTouchUpInside];
 
     loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
-//    loadBg.backgroundColor = UIColorFromRGB(0x009589);
     loadBg.backgroundColor = [UIColor blackColor];
     loadBg.alpha = 0.0;
     [loadBg addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeCellMenuView)]];
@@ -121,8 +118,11 @@
 }
 
 # pragma mark - Request
--(void)sendTheRequest
+-(void)getData
 {
+
+    
+    if ([self connected]) {
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
     
@@ -130,9 +130,33 @@
     loadBg.backgroundColor = UIColorFromRGB(0x009589);
     loadBg.alpha = 0.75;
     [self.view addSubview:loadBg];
-    
     self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
     [self.circlesInTriangles show];
+
+    }
+    else{
+//        self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+//        [self.circlesInTriangles show];
+        NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedEvent"];
+        NSError * error;
+        NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
+        
+        if (count == 0) {
+            connectionAlert = [[UIAlertView alloc]initWithTitle:@"No Network" message:@"Check your Network Settings\nand try again" delegate:self cancelButtonTitle:@"Reload" otherButtonTitles:nil, nil];
+            [connectionAlert show];
+        }
+        else{
+            mainArray = [fetchedArray mutableCopy];
+            [myTableView reloadData];
+            [self.circlesInTriangles hide];
+            [self.circlesInTriangles remove];
+            [loadBg removeFromSuperview];
+            loadBg = nil;
+            [refreshControl endRefreshing];
+            
+        }
+    }
 }
 
 
@@ -143,9 +167,26 @@
         for(NSDictionary *dict in [jsonReq.parsedJsonData objectForKey:@"data"]) {
             Event *event = [[Event alloc] initWithDict:dict];
             [mainArray addObject:event];
+            NSManagedObjectContext * context = [CoreDataHelper managedObjectContext];
+            SavedEvent * savedEvent = [NSEntityDescription insertNewObjectForEntityForName:@"SavedEvent" inManagedObjectContext:context];
+            savedEvent.event = event.event;
+            savedEvent.start = event.start;
+            savedEvent.stop = event.stop;
+            savedEvent.categ = event.categ;
+            savedEvent.prerevels = event.prerevels;
+            savedEvent.day = event.day;
+            savedEvent.desc = event.desc;
+            savedEvent.location = event.location;
+            savedEvent.contact = event.contact;
+            savedEvent.date = event.date;
+            NSError * error;
+            if (![context save:&error]) {
+                NSLog(@"Error :%@",error);
+            }
+            
         }
+        
         [myTableView reloadData];
-//        [hud hide:YES];
         [self.circlesInTriangles hide];
         [self.circlesInTriangles remove];
         [loadBg removeFromSuperview];
@@ -153,6 +194,15 @@
         [refreshControl endRefreshing];
     }
 }
+
+// Internet Connection Check Method
+- (BOOL)connected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
+}
+
 
 #pragma mark - Core Data
 
@@ -192,6 +242,8 @@
     }
     }
 }
+
+
 
 #pragma mark- Table View Datasource
 
