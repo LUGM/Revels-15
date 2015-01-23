@@ -8,6 +8,8 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+#define DRAG_DISTANCE_LIMIT 100.0 //parallax
+
 #import <CoreData/CoreData.h>
 #import "PageContentViewController.h"
 #import "EventTableViewCell.h"
@@ -21,6 +23,7 @@
 #import "CoreDataHelper.h"
 #import "SavedEvent.h"
 #import "Reachability.h"
+#import "UIScrollView+ParallaxEffect.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
@@ -34,6 +37,9 @@
     UIRefreshControl * refreshControl;
     UIAlertView * connectionAlert;
 }
+//For the parallax effect
+@property (nonatomic,copy) dragBlock dragblock;
+@property (nonatomic,copy) dragBlock finishblock;
 
 @property CellOptionView * cellOptionView;
 @property (nonatomic, strong) PQFCirclesInTriangle *circlesInTriangles;
@@ -47,19 +53,24 @@
     // Do any additional setup after loading the view.
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    self.view.frame = CGRectMake(0, -64, self.view.frame.size.width, self.view.frame.size.height);
-    
-    myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
+    myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, -25, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
     myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    self.view.frame = CGRectMake(0, -60, self.view.frame.size.width, self.view.frame.size.height);
     self.view.backgroundColor = UIColorFromRGB(0xf2f2f2);
     myTableView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:myTableView];
-    myTableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
+    myTableView.contentInset = UIEdgeInsetsMake(0,0,110, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    // Parallax Effect
+    [myTableView addBackgroundView:[self getParallaxView]
+                withWindowHeight:125
+               dragDistanceLimit:0
+                  parallaxFactor:0.4];
+    myTableView.draggingBlock = self.dragblock;
+    myTableView.finishDragBlock= self.finishblock;
     
     //Add pull to refresh
     refreshControl = [[UIRefreshControl alloc]init];
@@ -77,6 +88,44 @@
         _cellOptionView = [nib objectAtIndex:0];
     }
 }
+
+#pragma mark - Parallax Effect Methods
+
+-(dragBlock)dragblock
+{
+    if(!_dragblock)
+    {
+        _dragblock = ^(CGFloat offset)
+        {
+            NSLog(@"percent:%f",offset/DRAG_DISTANCE_LIMIT);
+        };
+    }
+    return _dragblock;
+}
+
+-(dragBlock)finishblock
+{
+    if(!_finishblock)
+    {
+        _finishblock= ^(CGFloat offset)
+        {
+            //maybe you should check the offset,
+            //then do some refresh work if it's reach your expect.
+            NSLog(@"maybe we'd refresh data now");
+        };
+    }
+    
+    return _finishblock;
+}
+
+-(UIView*)getParallaxView
+{
+    UIImage * image = [UIImage imageNamed:@"parallaxLogo.png"];
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.center = self.view.center;
+    return imageView;
+}
+
 
 #pragma mark - Cell Option View
 
@@ -121,6 +170,14 @@
 -(void)getData
 {
 
+    loadBg = [[UIView alloc]initWithFrame:self.view.frame];
+    loadBg.backgroundColor = UIColorFromRGB(0x009589);
+    loadBg.alpha = 0.75;
+    [self.view addSubview:loadBg];
+    self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+    [self.circlesInTriangles show];
+
+    
     NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedEvent"];
     NSError * error;
     NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
@@ -139,13 +196,6 @@
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
     
-    loadBg = [[UIView alloc]initWithFrame:self.view.frame];
-    loadBg.backgroundColor = UIColorFromRGB(0x009589);
-    loadBg.alpha = 0.75;
-    [self.view addSubview:loadBg];
-    self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
-    [self.circlesInTriangles show];
-
     }
     else{
 //        self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
@@ -157,6 +207,7 @@
             [connectionAlert show];
         }
         else{
+            [self.view addSubview:myTableView];
             mainArray = [fetchedArray mutableCopy];
             [myTableView reloadData];
             [self.circlesInTriangles hide];
@@ -196,6 +247,7 @@
             
         }
         
+        [self.view addSubview:myTableView];
         [myTableView reloadData];
         [self.circlesInTriangles hide];
         [self.circlesInTriangles remove];

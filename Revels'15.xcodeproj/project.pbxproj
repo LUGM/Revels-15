@@ -58,6 +58,9 @@
 		A3EE351D1A697F0200BAB7AE /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE350D1A697F0200BAB7AE /* UIView+WebCacheOperation.m */; };
 		A3F0313A1A6FE15E0037010F /* SavedCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F031391A6FE15E0037010F /* SavedCategory.m */; };
 		A3F67F001A6A98660057422B /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */; };
+		A3FED9371A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FED9341A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m */; };
+		A3FED9381A72AA23002B54A0 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FED9361A72AA23002B54A0 /* UIView+Util.m */; };
+		A3FED93C1A72C1D6002B54A0 /* parallaxLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A3FED93B1A72C1D6002B54A0 /* parallaxLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +171,12 @@
 		A3F031391A6FE15E0037010F /* SavedCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedCategory.m; sourceTree = "<group>"; };
 		A3F67EFE1A6A98660057422B /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
+		A3FED9321A72AA23002B54A0 /* CategoryPropertyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPropertyUtil.h; sourceTree = "<group>"; };
+		A3FED9331A72AA23002B54A0 /* UIScrollView+ParallaxEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ParallaxEffect.h"; sourceTree = "<group>"; };
+		A3FED9341A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ParallaxEffect.m"; sourceTree = "<group>"; };
+		A3FED9351A72AA23002B54A0 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		A3FED9361A72AA23002B54A0 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		A3FED93B1A72C1D6002B54A0 /* parallaxLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parallaxLogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +324,7 @@
 		A3554BBA1A55BADC0069896C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A3FED9311A72AA23002B54A0 /* NTParallaxView */,
 				A36A132B1A6ECA0400C74FB7 /* Reachability Files */,
 				A3C6C5311A6E1A7F00BB66B1 /* MBProgressHUD */,
 				A3EE34EC1A697F0200BAB7AE /* SDWebImage */,
@@ -399,6 +409,7 @@
 		A3E07C4F1A6C1F9400CB1420 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3FED93B1A72C1D6002B54A0 /* parallaxLogo.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -486,6 +497,18 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A3FED9311A72AA23002B54A0 /* NTParallaxView */ = {
+			isa = PBXGroup;
+			children = (
+				A3FED9321A72AA23002B54A0 /* CategoryPropertyUtil.h */,
+				A3FED9331A72AA23002B54A0 /* UIScrollView+ParallaxEffect.h */,
+				A3FED9341A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m */,
+				A3FED9351A72AA23002B54A0 /* UIView+Util.h */,
+				A3FED9361A72AA23002B54A0 /* UIView+Util.m */,
+			);
+			path = NTParallaxView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -535,6 +558,7 @@
 				TargetAttributes = {
 					A3162DC31A52D98D007F7010 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = M2TZJK2U6H;
 					};
 					A3162DDC1A52D98D007F7010 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -569,6 +593,7 @@
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
 				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
 				A3E07C561A6C21C400CB1420 /* CellOptionView.xib in Resources */,
+				A3FED93C1A72C1D6002B54A0 /* parallaxLogo.png in Resources */,
 				A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
 				A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */,
@@ -616,8 +641,10 @@
 				A3C6C5301A6E1A7900BB66B1 /* MBProgressHUD.m in Sources */,
 				A3EE350F1A697F0200BAB7AE /* NSData+ImageContentType.m in Sources */,
 				A3AFE20E1A69566300E86323 /* InstaFeedUser.m in Sources */,
+				A3FED9371A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m in Sources */,
 				A3AFE2081A6955B100E86323 /* InstaFeedTableViewCell.m in Sources */,
 				A3EE35151A697F0200BAB7AE /* SDWebImageManager.m in Sources */,
+				A3FED9381A72AA23002B54A0 /* UIView+Util.m in Sources */,
 				A3EE35121A697F0200BAB7AE /* SDWebImageDecoder.m in Sources */,
 				A3EE35141A697F0200BAB7AE /* SDWebImageDownloaderOperation.m in Sources */,
 				A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */,
@@ -744,9 +771,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Revels'15/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -754,9 +784,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Revels'15/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
