@@ -86,16 +86,28 @@
 
 -(void)getTheData
 {
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedCategory"];
+    NSError *error;
+    
     hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.dimBackground = YES;
     if ([self connected]) {
+        //For deleting the earlier fetched categories
+        NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+        NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
+        
+        if (count != 0){
+            for (SavedCategory * savedCat in fetchedArray) {
+                [[CoreDataHelper managedObjectContext] deleteObject:savedCat];
+            }
+        }
+    //sending the request
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/categories/"]];
+    
     }
     else
     {
-        NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedCategory"];
-        NSError *error;
         NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
         NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
 

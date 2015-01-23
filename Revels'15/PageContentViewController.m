@@ -121,8 +121,21 @@
 -(void)getData
 {
 
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedEvent"];
+    NSError * error;
+    NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     
     if ([self connected]) {
+        
+    // Deleting the previous data
+    NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
+        
+        if (count != 0){
+            for (SavedEvent * savedEvent in fetchedArray) {
+                [[CoreDataHelper managedObjectContext] deleteObject:savedEvent];
+            }
+        }
+
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
     
@@ -137,9 +150,6 @@
     else{
 //        self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
 //        [self.circlesInTriangles show];
-        NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedEvent"];
-        NSError * error;
-        NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
         NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
         
         if (count == 0) {
