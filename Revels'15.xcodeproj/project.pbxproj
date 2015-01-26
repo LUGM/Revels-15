@@ -19,6 +19,8 @@
 		A32AB5F21A5C404400787CCD /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F11A5C404400787CCD /* Event.m */; };
 		A32AB5F91A5C414A00787CCD /* EventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */; };
 		A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */; };
+		A32B4F111A7652C8006AC08E /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B4F101A7652C8006AC08E /* ResultsViewController.m */; };
+		A32B4F151A7656BF006AC08E /* ResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B4F141A7656BF006AC08E /* ResultsTableViewCell.m */; };
 		A32C56CC1A7528BA00445B2C /* menu-rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = A32C56CB1A7528BA00445B2C /* menu-rotate.png */; };
 		A32D98FB1A755B63007A3D4A /* ImageDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D98FA1A755B63007A3D4A /* ImageDisplayViewController.m */; };
 		A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A35D35961A68409C008CFF49 /* ViewPagerController.m */; };
@@ -102,6 +104,10 @@
 		A32AB5F81A5C414A00787CCD /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
 		A32AB5FA1A5C41F100787CCD /* SSJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSJSONModel.h; sourceTree = "<group>"; };
 		A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSJSONModel.m; sourceTree = "<group>"; };
+		A32B4F0F1A7652C8006AC08E /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		A32B4F101A7652C8006AC08E /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
+		A32B4F131A7656BF006AC08E /* ResultsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewCell.h; sourceTree = "<group>"; };
+		A32B4F141A7656BF006AC08E /* ResultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewCell.m; sourceTree = "<group>"; };
 		A32C56CB1A7528BA00445B2C /* menu-rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-rotate.png"; sourceTree = "<group>"; };
 		A32D98F91A755B63007A3D4A /* ImageDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDisplayViewController.h; sourceTree = "<group>"; };
 		A32D98FA1A755B63007A3D4A /* ImageDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDisplayViewController.m; sourceTree = "<group>"; };
@@ -299,6 +305,8 @@
 				A3DC74281A6D4B6C00B3ACBA /* FollowingViewController.m */,
 				A32D98F91A755B63007A3D4A /* ImageDisplayViewController.h */,
 				A32D98FA1A755B63007A3D4A /* ImageDisplayViewController.m */,
+				A32B4F0F1A7652C8006AC08E /* ResultsViewController.h */,
+				A32B4F101A7652C8006AC08E /* ResultsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -306,6 +314,7 @@
 		A319A5901A532027004BD5DA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A32B4F121A76569F006AC08E /* ResultsCell */,
 				A3E07C541A6C218100CB1420 /* CellOptionView */,
 				A3BBF9F61A69537800E63308 /* Instafeed Cells */,
 				A3EA5E7B1A554288001DA8FD /* MenuOptions */,
@@ -334,6 +343,15 @@
 				A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */,
 			);
 			name = SSJSONParse;
+			sourceTree = "<group>";
+		};
+		A32B4F121A76569F006AC08E /* ResultsCell */ = {
+			isa = PBXGroup;
+			children = (
+				A32B4F131A7656BF006AC08E /* ResultsTableViewCell.h */,
+				A32B4F141A7656BF006AC08E /* ResultsTableViewCell.m */,
+			);
+			name = ResultsCell;
 			sourceTree = "<group>";
 		};
 		A3554BBA1A55BADC0069896C /* Libraries */ = {
@@ -646,6 +664,7 @@
 				A3DC74291A6D4B6C00B3ACBA /* FollowingViewController.m in Sources */,
 				A3DC74191A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodeld in Sources */,
 				A3F67F001A6A98660057422B /* SplashScreenViewController.m in Sources */,
+				A32B4F151A7656BF006AC08E /* ResultsTableViewCell.m in Sources */,
 				A3EE35161A697F0200BAB7AE /* SDWebImagePrefetcher.m in Sources */,
 				A3EE351D1A697F0200BAB7AE /* UIView+WebCacheOperation.m in Sources */,
 				A3162DD01A52D98D007F7010 /* ViewController.m in Sources */,
@@ -672,6 +691,7 @@
 				A3FED9381A72AA23002B54A0 /* UIView+Util.m in Sources */,
 				A3EE35121A697F0200BAB7AE /* SDWebImageDecoder.m in Sources */,
 				A3EE35141A697F0200BAB7AE /* SDWebImageDownloaderOperation.m in Sources */,
+				A32B4F111A7652C8006AC08E /* ResultsViewController.m in Sources */,
 				A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */,
 				A3162DCA1A52D98D007F7010 /* main.m in Sources */,
 				A32D98FB1A755B63007A3D4A /* ImageDisplayViewController.m in Sources */,

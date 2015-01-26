@@ -66,9 +66,11 @@
     
     // Parallax Effect
     [myTableView addBackgroundView:[self getParallaxView]
-                withWindowHeight:125
-               dragDistanceLimit:0
-                  parallaxFactor:0.4];
+                  withWindowHeight:125
+                 dragDistanceLimit:0
+                    parallaxFactor:0.4];
+    
+    
     myTableView.draggingBlock = self.dragblock;
     myTableView.finishDragBlock= self.finishblock;
     

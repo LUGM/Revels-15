@@ -61,9 +61,11 @@ char * finishBlockKey;
 {
     if(!self.parallaxContainer)
     {
+        
+        //Changed the library to not scroll horizontally
         self.parallaxContainer = [[UIScrollView alloc] initWithFrame:CGRectMake(0,
                                                                                 0,
-                                                                                self.frame.size.width,
+                                                                                backgroundView.width,
                                                                                 backgroundView.height)];
         [self addSubview:self.parallaxContainer];
         self.parallaxContainer.backgroundColor = [UIColor clearColor];
