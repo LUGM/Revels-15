@@ -103,10 +103,53 @@
                     </view>
                     <navigationItem key="navigationItem" id="uFV-BP-249"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="LXB-DY-grW" kind="show" identifier="detailImage" id="ybY-av-FGK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSy-zO-Hn9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1507" y="1062"/>
+        </scene>
+        <!--Image Display View Controller-->
+        <scene sceneID="s4Z-Zj-Asg">
+            <objects>
+                <viewController id="LXB-DY-grW" customClass="ImageDisplayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XiW-I0-1gI"/>
+                        <viewControllerLayoutGuide type="bottom" id="vVO-uf-Euy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DTq-Y7-icJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="da7-L4-ycx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LXB-DY-grW" id="0vf-SF-k1y"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="da7-L4-ycx" firstAttribute="bottom" secondItem="vVO-uf-Euy" secondAttribute="top" id="7Sa-9b-TTY"/>
+                            <constraint firstAttribute="trailing" secondItem="da7-L4-ycx" secondAttribute="trailing" id="GfJ-SM-sdb"/>
+                            <constraint firstItem="da7-L4-ycx" firstAttribute="leading" secondItem="DTq-Y7-icJ" secondAttribute="leading" id="UBQ-kr-4ik"/>
+                            <constraint firstItem="da7-L4-ycx" firstAttribute="top" secondItem="DTq-Y7-icJ" secondAttribute="top" id="p25-L6-Cus"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ccI-0c-Ez4">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="cZG-J0-Al3"/>
+                    </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="scrollView" destination="da7-L4-ycx" id="gYv-RK-eIT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6HK-70-Vq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2053" y="1062"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="Okn-ho-Zc1">

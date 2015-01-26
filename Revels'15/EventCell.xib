@@ -11,40 +11,65 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EventName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BT-tL-PzW">
-                    <rect key="frame" x="61" y="1" width="179" height="33"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EventName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="6BT-tL-PzW">
+                    <rect key="frame" x="8" y="0.0" width="284" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tra-lq-cnO">
-                    <rect key="frame" x="8" y="48" width="188" height="30"/>
+                    <rect key="frame" x="48" y="41" width="234" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCC-FF-qxE">
-                    <rect key="frame" x="8" y="103" width="115" height="33"/>
+                    <rect key="frame" x="48" y="83" width="158" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gz9-fv-XPG">
-                    <rect key="frame" x="131" y="103" width="115" height="33"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="MNs-1N-8Hj">
+                    <rect key="frame" x="48" y="117" width="234" height="44"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_location.png" translatesAutoresizingMaskIntoConstraints="NO" id="oco-TL-Fei">
+                    <rect key="frame" x="0.0" y="35" width="40" height="40"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_contact.png" translatesAutoresizingMaskIntoConstraints="NO" id="vGe-Nc-6wr">
+                    <rect key="frame" x="0.0" y="117" width="40" height="40"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_time.png" translatesAutoresizingMaskIntoConstraints="NO" id="MhR-YV-sOE">
+                    <rect key="frame" x="0.0" y="76" width="40" height="40"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_date.png" translatesAutoresizingMaskIntoConstraints="NO" id="zrn-83-aUG">
+                    <rect key="frame" x="0.0" y="160" width="40" height="40"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Njk-OF-OLE">
+                    <rect key="frame" x="48" y="156" width="234" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="eventContactLabel" destination="MNs-1N-8Hj" id="hka-w6-G8h"/>
+                <outlet property="eventDateLabel" destination="Njk-OF-OLE" id="cbL-N0-4zB"/>
                 <outlet property="eventLocationLabel" destination="tra-lq-cnO" id="2LQ-Yf-I85"/>
                 <outlet property="eventNameLabel" destination="6BT-tL-PzW" id="snN-n1-y0s"/>
                 <outlet property="eventStartTimeLabel" destination="GCC-FF-qxE" id="ngc-ly-VFk"/>
-                <outlet property="eventStopTimeLabel" destination="Gz9-fv-XPG" id="k9L-1y-8da"/>
             </connections>
-            <point key="canvasLocation" x="-156" y="122"/>
+            <point key="canvasLocation" x="-817" y="-39"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_contact.png" width="96" height="96"/>
+        <image name="ic_date.png" width="96" height="96"/>
+        <image name="ic_location.png" width="96" height="96"/>
+        <image name="ic_time.png" width="96" height="96"/>
+    </resources>
 </document>

@@ -24,6 +24,7 @@
         self.categ = [dict objectForKey:@"category"];
         self.date = [dict objectForKey:@"date"];
         self.prerevels = [dict objectForKey:@"prerevels"];
+        self.contact = [dict objectForKey:@"contact"];
     }
     return self;
 }

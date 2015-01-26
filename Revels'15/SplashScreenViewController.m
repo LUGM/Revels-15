@@ -28,6 +28,20 @@
     return UIStatusBarStyleLightContent;
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [_sun removeFromSuperview];
+    [_hexOne removeFromSuperview];
+    [_hexTwo removeFromSuperview];
+    [_hexThree removeFromSuperview];
+    [_hexFour removeFromSuperview];
+    _sun = nil;
+    _hexOne = nil;
+    _hexTwo = nil;
+    _hexThree = nil;
+    _hexFour = nil;
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     self.view.backgroundColor = UIColorFromRGB(0x009589);

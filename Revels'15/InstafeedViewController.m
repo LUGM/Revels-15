@@ -8,6 +8,8 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+#define LOWRES @"low_resolution"
+#define HIGHDEF @"standard_resolution"
 
 #import "InstafeedViewController.h"
 #import "InstaFeedImage.h"
@@ -16,6 +18,9 @@
 #import "SSJSONModel.h"
 #import "UIImageView+WebCache.h"
 #import "PQFCirclesInTriangle.h"
+#import "Reachability.h"
+#import "ImageDisplayViewController.h"
+#import "AppDelegate.h"
 
 @interface InstafeedViewController () <SSJSONModelDelegate>
 {
@@ -28,6 +33,8 @@
     UIView * loadBg;
     
     UIRefreshControl * refreshControl;
+    NSString *imgQualityStringForUrl;
+    NSIndexPath * selectedIndex;
     
 }
 @property (nonatomic, strong) PQFCirclesInTriangle *circlesInTriangles;
@@ -86,11 +93,29 @@
     [self.circlesInTriangles show];
     
     [self sendTheRequest];
+    
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    
+
+    //If connected to wifi or 3G Image quality is high else low
+    if (status == ReachableViaWiFi||status == ReachableViaWWAN)
+    {
+        imgQualityStringForUrl = HIGHDEF;
+    }
+    else
+    {
+        imgQualityStringForUrl = LOWRES;
+    }
+
 
 }
 
 -(void)sendTheRequest
 {
+    
     //Send the request
     jsonReq = [[SSJSONModel alloc] initWithDelegate:self];
     [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"https://api.instagram.com/v1/tags/revels15/media/recent?client_id=cc059e358993470a8dd4e6dfc57119a0"]];
@@ -120,7 +145,7 @@
             InstaFeedUser * user = [[InstaFeedUser alloc]initWithDictionary:[dictionary objectForKey:@"user"]];
             
             [userArray addObject:user];
-            InstaFeedImage * img = [[InstaFeedImage alloc]initWithDictionary:[[dictionary objectForKey:@"images"] objectForKey:@"low_resolution"]];
+            InstaFeedImage * img = [[InstaFeedImage alloc]initWithDictionary:[[dictionary objectForKey:@"images"] objectForKey:imgQualityStringForUrl]];
             [imagesArray addObject:img];
             [refreshControl endRefreshing];
             [self viewDidLayoutSubviews];
@@ -170,6 +195,7 @@
     InstaFeedImage * img = [imagesArray objectAtIndex:indexPath.row];
     [cell.mainImage sd_setImageWithURL:[NSURL URLWithString:img.url] placeholderImage:[UIImage imageNamed:@"logo"]];
     [cell.userImage sd_setImageWithURL:[NSURL URLWithString:user.profile_picture] placeholderImage:[UIImage imageNamed:@"logo"]];
+
     
     return cell;
 }
@@ -181,7 +207,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [myTableView deselectRowAtIndexPath:indexPath animated:YES];
+    selectedIndex = indexPath;
+    [self performSegueWithIdentifier:@"detailImage" sender:self];
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -190,4 +218,16 @@
     blankView.backgroundColor = [UIColor clearColor];
     return blankView;
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqual: @"detailImage"]) {
+        ImageDisplayViewController * destination = segue.destinationViewController;
+        
+        InstaFeedImage * imageUrl = [imagesArray objectAtIndex:selectedIndex.row];
+        NSLog(@"%@",imageUrl.url);
+        destination.requiredUrl = imageUrl.url;
+    }
+}
+
 @end

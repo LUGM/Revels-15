@@ -289,6 +289,16 @@
     
     [UIView animateWithDuration:0.5
                           delay:0
+                        options:(UIViewAnimationOptionCurveLinear)
+                     animations:^ {
+                         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"Cancel"];
+                     }
+                     completion:^(BOOL finished) {
+                     }
+     ];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0
          usingSpringWithDamping:0.8
           initialSpringVelocity:0
                         options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -310,6 +320,7 @@
                         options:UIViewAnimationOptionCurveEaseInOut animations:^{
         blurBackgroundView.alpha = 0;
         menuView.frame = CGRectMake(menuView.frame.origin.x, self.view.frame.size.height, menuView.frame.size.width, menuView.frame.size.height);
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"menu"];
     } completion:^(BOOL finished) {
         blurBackgroundView = nil;
         menuView = nil;
@@ -323,6 +334,7 @@
                         options:UIViewAnimationOptionCurveEaseInOut animations:^{
             blurBackgroundView.alpha = 0;
             menuView.frame = CGRectMake(menuView.frame.origin.x,0 - self.view.frame.size.height, menuView.frame.size.width, menuView.frame.size.height);
+            self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"menu"];
         } completion:^(BOOL finished) {
             blurBackgroundView = nil;
             menuView = nil;

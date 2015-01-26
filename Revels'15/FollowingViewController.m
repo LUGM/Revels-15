@@ -101,10 +101,10 @@
     Event * event = [mainArray objectAtIndex:indexPath.row];
     
     cell.eventNameLabel.text = event.event;
-    cell.eventStartTimeLabel.text = event.start;
-    cell.eventStopTimeLabel.text = event.stop;
+    cell.eventStartTimeLabel.text = [NSString stringWithFormat:@"%@-%@",event.start,event.stop];
     cell.eventLocationLabel.text = event.location;
-    
+    cell.eventContactLabel.text = event.contact;
+    cell.eventDateLabel.text = [NSString stringWithFormat:@"%@-Day %@",event.date,event.day];
     return cell;
 }
 
@@ -152,5 +152,7 @@ didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView reloadData];
 }
+
+
 
 @end

@@ -83,10 +83,6 @@
 
     [self getData];
     
-    if (_cellOptionView == nil) {
-        NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
-        _cellOptionView = [nib objectAtIndex:0];
-    }
 }
 
 #pragma mark - Parallax Effect Methods
@@ -97,7 +93,7 @@
     {
         _dragblock = ^(CGFloat offset)
         {
-            NSLog(@"percent:%f",offset/DRAG_DISTANCE_LIMIT);
+//            NSLog(@"percent:%f",offset/DRAG_DISTANCE_LIMIT);
         };
     }
     return _dragblock;
@@ -111,7 +107,7 @@
         {
             //maybe you should check the offset,
             //then do some refresh work if it's reach your expect.
-            NSLog(@"maybe we'd refresh data now");
+//            NSLog(@"maybe we'd refresh data now");
         };
     }
     
@@ -131,8 +127,13 @@
 
 -(void)openCellOptionView:(Event*)event
 {
-    NSLog(@"%@",event.event);
+//    NSLog(@"%@",event.event);
     
+    if (_cellOptionView == nil) {
+        NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
+        _cellOptionView = [nib objectAtIndex:0];
+    }
+
     _cellOptionView.frame = CGRectMake(0, self.view.frame.size.height + 110, self.view.frame.size.width-20, _cellOptionView.frame.size.height);
     _cellOptionView.eventLabel.text = event.event;
     _cellOptionView.eventDescription.text = event.desc;
@@ -162,6 +163,7 @@
     } completion:^(BOOL finished) {
         [loadBg removeFromSuperview];
         [_cellOptionView removeFromSuperview];
+        _cellOptionView = nil;
         loadBg = nil;
     }];
 }
@@ -185,9 +187,9 @@
     if ([self connected]) {
         
     // Deleting the previous data
-    NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
+    NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];       
         
-        if (count != 0){
+        if (count !=0){
             for (SavedEvent * savedEvent in fetchedArray) {
                 [[CoreDataHelper managedObjectContext] deleteObject:savedEvent];
             }
@@ -198,8 +200,6 @@
     
     }
     else{
-//        self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
-//        [self.circlesInTriangles show];
         NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
         
         if (count == 0) {
@@ -298,6 +298,7 @@
     followEvent.start = event.start;
     followEvent.stop = event.stop;
     followEvent.desc = event.desc;
+    followEvent.contact = event.contact;
     
     if (![context save:&error]) {
         NSLog(@"%@",error);
@@ -331,9 +332,10 @@
     Event *event = [mainArray objectAtIndex:indexPath.row];
     cell.eventLocationLabel.text = event.location;
     cell.eventNameLabel.text = event.event;
-    cell.eventStartTimeLabel.text = event.start;
-    cell.eventStopTimeLabel.text = event.stop;
-    
+    cell.eventStartTimeLabel.text = [NSString stringWithFormat:@"%@-%@",event.start,event.stop];
+    cell.eventContactLabel.text = event.contact;
+    cell.eventDateLabel.text = [NSString stringWithFormat:@"%@ - Day %@",event.date,event.day];
+
     return cell;
 }
 
