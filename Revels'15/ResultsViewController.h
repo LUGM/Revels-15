@@ -10,5 +10,4 @@
 
 @interface ResultsViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @end

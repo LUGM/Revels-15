@@ -31,6 +31,7 @@
 		A3AFE2081A6955B100E86323 /* InstaFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE2071A6955B100E86323 /* InstaFeedTableViewCell.m */; };
 		A3AFE20E1A69566300E86323 /* InstaFeedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE20D1A69566300E86323 /* InstaFeedUser.m */; };
 		A3AFE2121A69576600E86323 /* InstaFeedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE2111A69576600E86323 /* InstaFeedImage.m */; };
+		A3BADF031A7901CF00FB3F90 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BADF021A7901CF00FB3F90 /* ResultCell.xib */; };
 		A3BBF9F51A693D8D00E63308 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BBF9F41A693D8D00E63308 /* Categories.m */; };
 		A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BBF9F71A69539B00E63308 /* instacell.xib */; };
 		A3C6C5301A6E1A7900BB66B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C6C52F1A6E1A7900BB66B1 /* MBProgressHUD.m */; };
@@ -128,6 +129,7 @@
 		A3AFE20D1A69566300E86323 /* InstaFeedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaFeedUser.m; sourceTree = "<group>"; };
 		A3AFE2101A69576600E86323 /* InstaFeedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaFeedImage.h; sourceTree = "<group>"; };
 		A3AFE2111A69576600E86323 /* InstaFeedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaFeedImage.m; sourceTree = "<group>"; };
+		A3BADF021A7901CF00FB3F90 /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		A3BBF9F31A693D8D00E63308 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		A3BBF9F41A693D8D00E63308 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
 		A3BBF9F71A69539B00E63308 /* instacell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = instacell.xib; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			children = (
 				A32B4F131A7656BF006AC08E /* ResultsTableViewCell.h */,
 				A32B4F141A7656BF006AC08E /* ResultsTableViewCell.m */,
+				A3BADF021A7901CF00FB3F90 /* ResultCell.xib */,
 			);
 			name = ResultsCell;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				A3D03F931A74BE35005F016E /* ic_contact.png in Resources */,
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
 				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
+				A3BADF031A7901CF00FB3F90 /* ResultCell.xib in Resources */,
 				A3E07C561A6C21C400CB1420 /* CellOptionView.xib in Resources */,
 				A3FED93C1A72C1D6002B54A0 /* parallaxLogo.png in Resources */,
 				A3D03F8F1A74BD0E005F016E /* ic_time.png in Resources */,

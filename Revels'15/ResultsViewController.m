@@ -27,6 +27,7 @@
     NSDictionary * mainDictionary;
     
 }
+@property IBOutlet UITableView *myTableView;
 
 @end
 
@@ -35,9 +36,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width - 20, self.view.frame.size.height)];
     _myTableView.delegate = self;
     _myTableView.dataSource = self;
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_myTableView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -70,7 +73,7 @@
 
 -(void)viewDidLayoutSubviews
 {
-    _myTableView.contentInset = UIEdgeInsetsMake(66, 0, 0, 10);
+    _myTableView.contentInset = UIEdgeInsetsMake(66, 0, 0, 0);
 }
 
 -(void)jsonRequestDidCompleteWithDict:(NSDictionary *)dict model:(SSJSONModel *)JSONModel
@@ -121,6 +124,11 @@
     static NSString * cellIdentifier = @"Cell";
     
     ResultsTableViewCell * cell = (ResultsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"ResultCell" owner:self options:nil];
+    cell = [nib objectAtIndex:0];
+    if (cell == nil) {
+        cell = [[ResultsTableViewCell alloc]init];
+    }
     cell.eventNameLabel.text = eventName[indexPath.row];
     cell.categoryNameLabel.text =catName[indexPath.row];
     return cell;
@@ -138,5 +146,10 @@
     UIView * blankView = [[UIView alloc]initWithFrame:CGRectZero];
     
     return blankView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 89;
 }
 @end
