@@ -14,6 +14,8 @@
 		<string>https://github.com/poolqf/PQFCustomLoaders.git</string>
 		<key>BCAC93E01437A633DB71221015EF3C6CD361ED38</key>
 		<string>https://github.com/shubhsin/Revels-15.git</string>
+		<key>C1D973FAFC295B2AEBDD150EBD42C054CFE74FF3</key>
+		<string>https://github.com/apping/APParallaxHeader</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Revels'15.xcodeproj</string>
@@ -23,6 +25,8 @@
 		<string>../../../Desktop/iOS%20Libraries/PQFCustomLoaders</string>
 		<key>BCAC93E01437A633DB71221015EF3C6CD361ED38</key>
 		<string>../..</string>
+		<key>C1D973FAFC295B2AEBDD150EBD42C054CFE74FF3</key>
+		<string>../../../Revels-15/Revels'15/APParallaxHeader</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/shubhsin/Revels-15.git</string>
@@ -32,6 +36,14 @@
 	<string>BCAC93E01437A633DB71221015EF3C6CD361ED38</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C1D973FAFC295B2AEBDD150EBD42C054CFE74FF3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>APParallaxHeader</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

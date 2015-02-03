@@ -185,6 +185,7 @@
 }
 
 #pragma mark - Helpers
+
 - (void)loadContent {
     self.numberOfTabs = [categoryArray count];
 }
@@ -224,7 +225,9 @@
     
     PageContentViewController *cvc = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     cvc.pageIndex = index;
+    Categories * categ = [categoryArray objectAtIndex:index];
     
+    cvc.categoryText = categ.category;
     //    cvc.labelString = [NSString stringWithFormat:@"Content View #%i", index];
     
     return cvc;
@@ -282,6 +285,7 @@
     menuView = [[MenuOptions alloc]init];
     menuView = [nib objectAtIndex:0];
     [menuView.followingButton addTarget:self action:@selector(segueToFollowingTab) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.resultsButton addTarget:self action:@selector(segueToResultsTab) forControlEvents:UIControlEventTouchUpInside];
     menuView.center = self.view.center;
     menuView.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height - 50);
     
@@ -350,6 +354,12 @@
 {
     [self removeBgAndMenuWithdirectionUp:YES];
     [self performSegueWithIdentifier:@"follow" sender:self];
+}
+
+-(void)segueToResultsTab
+{
+    [self removeBgAndMenuWithdirectionUp:YES];
+    [self performSegueWithIdentifier:@"showResults" sender:self];
 }
 
 #pragma mark - Segue to other View Controllers

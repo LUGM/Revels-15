@@ -50,6 +50,9 @@
     //if your ViewController is inside a navigationController then the navigationController’s navigationBar.barStyle determines the statusBarStyle
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Cancel"] style:UIBarButtonItemStylePlain target:self action:@selector(previousView)];
+    
+    
     // For Shadow Below the Navigation Bar
     self.navigationController.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
@@ -69,6 +72,11 @@
     loaderView = [[PQFCirclesInTriangle alloc]initLoaderOnView:loadBg];
     [loaderView show];
     
+}
+
+-(void)previousView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)viewDidLayoutSubviews

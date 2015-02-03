@@ -11,5 +11,6 @@
 @interface MenuOptions : UIView
 
 @property (weak, nonatomic) IBOutlet UIButton *followingButton;
+@property (weak, nonatomic) IBOutlet UIButton *resultsButton;
 
 @end

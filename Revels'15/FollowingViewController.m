@@ -13,12 +13,17 @@
 #import "Following.h"
 #import "EventTableViewCell.h"
 #import "Event.h"
+#import "CellOptionView.h"
 
 @interface FollowingViewController () <UITableViewDataSource,UITableViewDelegate>
 {
     UITableView * myTableView;
     NSMutableArray * mainArray;
+    
+    UIView * loadBg;
 }
+
+@property CellOptionView * cellOptionView;
 
 @end
 
@@ -65,16 +70,59 @@
 
 }
 
+#pragma mark - Cell Option View
+
+-(void)openCellOptionView:(Event*)event
+{
+    //    NSLog(@"%@",event.event);
+    
+    if (_cellOptionView == nil) {
+        NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
+        _cellOptionView = [nib objectAtIndex:0];
+    }
+    
+    _cellOptionView.frame = CGRectMake(0, self.view.frame.size.height + 110, self.view.frame.size.width-20, _cellOptionView.frame.size.height);
+    _cellOptionView.eventLabel.text = event.event;
+    _cellOptionView.eventDescription.text = event.desc;
+    
+    
+    [_cellOptionView.addToFollowingButton setTitle:@"Done" forState:UIControlStateNormal];
+    [_cellOptionView.addToFollowingButton addTarget:self action:@selector(removeCellMenuView) forControlEvents:UIControlEventTouchUpInside];
+    
+    loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
+    loadBg.backgroundColor = [UIColor blackColor];
+    loadBg.alpha = 0.0;
+    [loadBg addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeCellMenuView)]];
+    [self.navigationController.view addSubview:loadBg];
+    [self.navigationController.view addSubview:_cellOptionView];
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loadBg.alpha = 0.75;
+        _cellOptionView.center = CGPointMake(self.view.center.x, self.view.center.y);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)removeCellMenuView
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loadBg.alpha = 0.0;
+        _cellOptionView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 350);
+    } completion:^(BOOL finished) {
+        [loadBg removeFromSuperview];
+        [_cellOptionView removeFromSuperview];
+        _cellOptionView = nil;
+        loadBg = nil;
+    }];
+}
+
+#pragma mark - Segues
+
 -(void)previousView
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 #pragma mark - Table View
 
@@ -113,6 +161,12 @@
     return 200;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Event * event = [mainArray objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self openCellOptionView:event];
+}
 
 // Methods For Deleting
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView

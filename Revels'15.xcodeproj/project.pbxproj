@@ -21,13 +21,15 @@
 		A32AB5FC1A5C41F100787CCD /* SSJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AB5FB1A5C41F100787CCD /* SSJSONModel.m */; };
 		A32B4F111A7652C8006AC08E /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B4F101A7652C8006AC08E /* ResultsViewController.m */; };
 		A32B4F151A7656BF006AC08E /* ResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32B4F141A7656BF006AC08E /* ResultsTableViewCell.m */; };
-		A32C56CC1A7528BA00445B2C /* menu-rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = A32C56CB1A7528BA00445B2C /* menu-rotate.png */; };
 		A32D98FB1A755B63007A3D4A /* ImageDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D98FA1A755B63007A3D4A /* ImageDisplayViewController.m */; };
 		A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A35D35961A68409C008CFF49 /* ViewPagerController.m */; };
 		A36A132E1A6ECA0400C74FB7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A132D1A6ECA0400C74FB7 /* Reachability.m */; };
 		A3711F8D1A67E7380021A926 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = A3711F891A67E7380021A926 /* PQFCirclesInTriangle.m */; };
 		A3711F901A67E7B60021A926 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A3711F8F1A67E7B60021A926 /* UIColor+FlatColors.m */; };
 		A37694B91A7027B0007720C3 /* SavedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A37694B81A7027B0007720C3 /* SavedEvent.m */; };
+		A39650AE1A80901E001B3E73 /* following.png in Resources */ = {isa = PBXBuildFile; fileRef = A39650AB1A80901E001B3E73 /* following.png */; };
+		A39650AF1A80901E001B3E73 /* results.png in Resources */ = {isa = PBXBuildFile; fileRef = A39650AC1A80901E001B3E73 /* results.png */; };
+		A39650B01A80901E001B3E73 /* team.png in Resources */ = {isa = PBXBuildFile; fileRef = A39650AD1A80901E001B3E73 /* team.png */; };
 		A3AFE2081A6955B100E86323 /* InstaFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE2071A6955B100E86323 /* InstaFeedTableViewCell.m */; };
 		A3AFE20E1A69566300E86323 /* InstaFeedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE20D1A69566300E86323 /* InstaFeedUser.m */; };
 		A3AFE2121A69576600E86323 /* InstaFeedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AFE2111A69576600E86323 /* InstaFeedImage.m */; };
@@ -39,6 +41,7 @@
 		A3D03F8F1A74BD0E005F016E /* ic_time.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D03F8E1A74BD0E005F016E /* ic_time.png */; };
 		A3D03F911A74BD18005F016E /* ic_date.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D03F901A74BD18005F016E /* ic_date.png */; };
 		A3D03F931A74BE35005F016E /* ic_contact.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D03F921A74BE35005F016E /* ic_contact.png */; };
+		A3D616EC1A7E074000883897 /* parallaxlogo2.png in Resources */ = {isa = PBXBuildFile; fileRef = A3D616EB1A7E074000883897 /* parallaxlogo2.png */; };
 		A3DC74191A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3DC74171A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodeld */; };
 		A3DC74231A6D435B00B3ACBA /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DC74221A6D435B00B3ACBA /* CoreDataHelper.m */; };
 		A3DC74261A6D44C100B3ACBA /* Following.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DC74251A6D44C100B3ACBA /* Following.m */; };
@@ -67,8 +70,6 @@
 		A3EE351D1A697F0200BAB7AE /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE350D1A697F0200BAB7AE /* UIView+WebCacheOperation.m */; };
 		A3F0313A1A6FE15E0037010F /* SavedCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F031391A6FE15E0037010F /* SavedCategory.m */; };
 		A3F67F001A6A98660057422B /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */; };
-		A3FED9371A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FED9341A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m */; };
-		A3FED9381A72AA23002B54A0 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FED9361A72AA23002B54A0 /* UIView+Util.m */; };
 		A3FED93C1A72C1D6002B54A0 /* parallaxLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A3FED93B1A72C1D6002B54A0 /* parallaxLogo.png */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +110,6 @@
 		A32B4F101A7652C8006AC08E /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		A32B4F131A7656BF006AC08E /* ResultsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewCell.h; sourceTree = "<group>"; };
 		A32B4F141A7656BF006AC08E /* ResultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewCell.m; sourceTree = "<group>"; };
-		A32C56CB1A7528BA00445B2C /* menu-rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-rotate.png"; sourceTree = "<group>"; };
 		A32D98F91A755B63007A3D4A /* ImageDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDisplayViewController.h; sourceTree = "<group>"; };
 		A32D98FA1A755B63007A3D4A /* ImageDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDisplayViewController.m; sourceTree = "<group>"; };
 		A35D35951A68409C008CFF49 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
@@ -123,6 +123,9 @@
 		A3711F8F1A67E7B60021A926 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
 		A37694B71A7027B0007720C3 /* SavedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedEvent.h; sourceTree = "<group>"; };
 		A37694B81A7027B0007720C3 /* SavedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedEvent.m; sourceTree = "<group>"; };
+		A39650AB1A80901E001B3E73 /* following.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = following.png; sourceTree = "<group>"; };
+		A39650AC1A80901E001B3E73 /* results.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = results.png; sourceTree = "<group>"; };
+		A39650AD1A80901E001B3E73 /* team.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = team.png; sourceTree = "<group>"; };
 		A3AFE2061A6955B100E86323 /* InstaFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaFeedTableViewCell.h; sourceTree = "<group>"; };
 		A3AFE2071A6955B100E86323 /* InstaFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstaFeedTableViewCell.m; sourceTree = "<group>"; };
 		A3AFE20C1A69566300E86323 /* InstaFeedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstaFeedUser.h; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		A3D03F8E1A74BD0E005F016E /* ic_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_time.png; sourceTree = "<group>"; };
 		A3D03F901A74BD18005F016E /* ic_date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_date.png; sourceTree = "<group>"; };
 		A3D03F921A74BE35005F016E /* ic_contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_contact.png; sourceTree = "<group>"; };
+		A3D616EB1A7E074000883897 /* parallaxlogo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parallaxlogo2.png; sourceTree = "<group>"; };
 		A3DC74181A6D41DE00B3ACBA /* Revels_CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Revels_CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A3DC74211A6D435B00B3ACBA /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		A3DC74221A6D435B00B3ACBA /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
@@ -192,11 +196,6 @@
 		A3F031391A6FE15E0037010F /* SavedCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedCategory.m; sourceTree = "<group>"; };
 		A3F67EFE1A6A98660057422B /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		A3F67EFF1A6A98660057422B /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
-		A3FED9321A72AA23002B54A0 /* CategoryPropertyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPropertyUtil.h; sourceTree = "<group>"; };
-		A3FED9331A72AA23002B54A0 /* UIScrollView+ParallaxEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ParallaxEffect.h"; sourceTree = "<group>"; };
-		A3FED9341A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ParallaxEffect.m"; sourceTree = "<group>"; };
-		A3FED9351A72AA23002B54A0 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
-		A3FED9361A72AA23002B54A0 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
 		A3FED93B1A72C1D6002B54A0 /* parallaxLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parallaxLogo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -360,7 +359,6 @@
 		A3554BBA1A55BADC0069896C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				A3FED9311A72AA23002B54A0 /* NTParallaxView */,
 				A36A132B1A6ECA0400C74FB7 /* Reachability Files */,
 				A3C6C5311A6E1A7F00BB66B1 /* MBProgressHUD */,
 				A3EE34EC1A697F0200BAB7AE /* SDWebImage */,
@@ -445,12 +443,15 @@
 		A3E07C4F1A6C1F9400CB1420 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A32C56CB1A7528BA00445B2C /* menu-rotate.png */,
+				A3D616EB1A7E074000883897 /* parallaxlogo2.png */,
 				A3FED93B1A72C1D6002B54A0 /* parallaxLogo.png */,
 				A3D03F8C1A74BCA2005F016E /* ic_location.png */,
 				A3D03F8E1A74BD0E005F016E /* ic_time.png */,
 				A3D03F901A74BD18005F016E /* ic_date.png */,
 				A3D03F921A74BE35005F016E /* ic_contact.png */,
+				A39650AB1A80901E001B3E73 /* following.png */,
+				A39650AC1A80901E001B3E73 /* results.png */,
+				A39650AD1A80901E001B3E73 /* team.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -538,18 +539,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A3FED9311A72AA23002B54A0 /* NTParallaxView */ = {
-			isa = PBXGroup;
-			children = (
-				A3FED9321A72AA23002B54A0 /* CategoryPropertyUtil.h */,
-				A3FED9331A72AA23002B54A0 /* UIScrollView+ParallaxEffect.h */,
-				A3FED9341A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m */,
-				A3FED9351A72AA23002B54A0 /* UIView+Util.h */,
-				A3FED9361A72AA23002B54A0 /* UIView+Util.m */,
-			);
-			path = NTParallaxView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -633,17 +622,20 @@
 			files = (
 				A3D03F931A74BE35005F016E /* ic_contact.png in Resources */,
 				A3162DD31A52D98D007F7010 /* Main.storyboard in Resources */,
+				A39650B01A80901E001B3E73 /* team.png in Resources */,
 				A3EA5E7D1A5542A2001DA8FD /* MenuOptions.xib in Resources */,
 				A3BADF031A7901CF00FB3F90 /* ResultCell.xib in Resources */,
 				A3E07C561A6C21C400CB1420 /* CellOptionView.xib in Resources */,
 				A3FED93C1A72C1D6002B54A0 /* parallaxLogo.png in Resources */,
+				A3D616EC1A7E074000883897 /* parallaxlogo2.png in Resources */,
+				A39650AF1A80901E001B3E73 /* results.png in Resources */,
 				A3D03F8F1A74BD0E005F016E /* ic_time.png in Resources */,
 				A32AB5EC1A5C3D2800787CCD /* EventCell.xib in Resources */,
+				A39650AE1A80901E001B3E73 /* following.png in Resources */,
 				A3162DD51A52D98D007F7010 /* Images.xcassets in Resources */,
 				A3D03F911A74BD18005F016E /* ic_date.png in Resources */,
 				A3D03F8D1A74BCA2005F016E /* ic_location.png in Resources */,
 				A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */,
-				A32C56CC1A7528BA00445B2C /* menu-rotate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,10 +681,8 @@
 				A3C6C5301A6E1A7900BB66B1 /* MBProgressHUD.m in Sources */,
 				A3EE350F1A697F0200BAB7AE /* NSData+ImageContentType.m in Sources */,
 				A3AFE20E1A69566300E86323 /* InstaFeedUser.m in Sources */,
-				A3FED9371A72AA23002B54A0 /* UIScrollView+ParallaxEffect.m in Sources */,
 				A3AFE2081A6955B100E86323 /* InstaFeedTableViewCell.m in Sources */,
 				A3EE35151A697F0200BAB7AE /* SDWebImageManager.m in Sources */,
-				A3FED9381A72AA23002B54A0 /* UIView+Util.m in Sources */,
 				A3EE35121A697F0200BAB7AE /* SDWebImageDecoder.m in Sources */,
 				A3EE35141A697F0200BAB7AE /* SDWebImageDownloaderOperation.m in Sources */,
 				A32B4F111A7652C8006AC08E /* ResultsViewController.m in Sources */,

@@ -23,23 +23,20 @@
 #import "CoreDataHelper.h"
 #import "SavedEvent.h"
 #import "Reachability.h"
-#import "UIScrollView+ParallaxEffect.h"
 
 @interface PageContentViewController () <SSJSONModelDelegate>
 {
-    UITableView * myTableView;
     SSJSONModel * jsonReq;
     NSMutableArray * mainArray;
-    UIView * loadBg;
+    NSMutableArray * filteredArray;
     AppDelegate * appDelegate;
     NSIndexPath * selectedIndex;
     
+    UITableView * myTableView;
+    UIView * loadBg;
     UIRefreshControl * refreshControl;
     UIAlertView * connectionAlert;
 }
-//For the parallax effect
-@property (nonatomic,copy) dragBlock dragblock;
-@property (nonatomic,copy) dragBlock finishblock;
 
 @property CellOptionView * cellOptionView;
 @property (nonatomic, strong) PQFCirclesInTriangle *circlesInTriangles;
@@ -50,13 +47,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"Category is %@",_categoryText);
+    
     // Do any additional setup after loading the view.
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, -25, self.view.frame.size.width-20, self.view.frame.size.height)];
+    myTableView = [[UITableView alloc]initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, self.view.frame.size.height)];
     myTableView.dataSource = self;
     myTableView.delegate = self;
     myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    myTableView.scrollEnabled = YES;
+    [myTableView setScrollsToTop:YES];
     
     self.view.frame = CGRectMake(0, -60, self.view.frame.size.width, self.view.frame.size.height);
     self.view.backgroundColor = UIColorFromRGB(0xf2f2f2);
@@ -64,15 +65,6 @@
     myTableView.contentInset = UIEdgeInsetsMake(0,0,110, 0);
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    // Parallax Effect
-    [myTableView addBackgroundView:[self getParallaxView]
-                  withWindowHeight:125
-                 dragDistanceLimit:0
-                    parallaxFactor:0.4];
-    
-    
-    myTableView.draggingBlock = self.dragblock;
-    myTableView.finishDragBlock= self.finishblock;
     
     //Add pull to refresh
     refreshControl = [[UIRefreshControl alloc]init];
@@ -87,42 +79,28 @@
     
 }
 
-#pragma mark - Parallax Effect Methods
-
--(dragBlock)dragblock
+-(void)scrollToTheTop
 {
-    if(!_dragblock)
-    {
-        _dragblock = ^(CGFloat offset)
-        {
-//            NSLog(@"percent:%f",offset/DRAG_DISTANCE_LIMIT);
-        };
-    }
-    return _dragblock;
-}
-
--(dragBlock)finishblock
-{
-    if(!_finishblock)
-    {
-        _finishblock= ^(CGFloat offset)
-        {
-            //maybe you should check the offset,
-            //then do some refresh work if it's reach your expect.
-//            NSLog(@"maybe we'd refresh data now");
-        };
-    }
+    [myTableView setContentOffset:CGPointZero animated:YES];
     
-    return _finishblock;
+    NSLog(@"top %s",[myTableView scrollsToTop]?"true":"false");
+    
 }
 
--(UIView*)getParallaxView
-{
-    UIImage * image = [UIImage imageNamed:@"parallaxLogo.png"];
-    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.center = self.view.center;
-    return imageView;
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (motion == UIEventSubtypeMotionShake) {
+  
+        [self scrollToTheTop];
+    }
 }
+
+//-(UIView*)getParallaxView
+//{
+//    UIImage * image = [UIImage imageNamed:@"parallaxLogo2.png"];
+//    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
+////    imageView.center = self.view.center;
+//    return imageView;
+//}
 
 
 #pragma mark - Cell Option View
@@ -211,12 +189,13 @@
         else{
             [self.view addSubview:myTableView];
             mainArray = [fetchedArray mutableCopy];
-            [myTableView reloadData];
-            [self.circlesInTriangles hide];
-            [self.circlesInTriangles remove];
-            [loadBg removeFromSuperview];
-            loadBg = nil;
-            [refreshControl endRefreshing];
+            [self filterTheArrayAndDisplay];
+//            [myTableView reloadData];
+//            [self.circlesInTriangles hide];
+//            [self.circlesInTriangles remove];
+//            [loadBg removeFromSuperview];
+//            loadBg = nil;
+//            [refreshControl endRefreshing];
             
         }
     }
@@ -249,14 +228,30 @@
             
         }
         
-        [self.view addSubview:myTableView];
-        [myTableView reloadData];
-        [self.circlesInTriangles hide];
-        [self.circlesInTriangles remove];
-        [loadBg removeFromSuperview];
-        loadBg = nil;
-        [refreshControl endRefreshing];
+        [self filterTheArrayAndDisplay];
     }
+}
+
+-(void)filterTheArrayAndDisplay
+{
+    filteredArray = [NSMutableArray array];
+    
+    for (Event * event in mainArray) {
+        if ([event.categ isEqualToString:self.categoryText]) {
+            [filteredArray addObject:event];
+        }
+    }
+    
+        
+    [self.view addSubview:myTableView];
+    [myTableView reloadData];
+    [loadBg removeFromSuperview];
+    loadBg = nil;
+    [self.circlesInTriangles hide];
+    [self.circlesInTriangles remove];
+    [refreshControl endRefreshing];
+
+    
 }
 
 // Internet Connection Check Method
@@ -276,7 +271,7 @@
     NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Following"];
     NSError * error = nil;
     
-    Event * event = [mainArray objectAtIndex:selectedIndex.row];
+    Event * event = [filteredArray objectAtIndex:selectedIndex.row];
     NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     BOOL isPresent = NO;
     
@@ -319,7 +314,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [mainArray count];
+    return [filteredArray count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -331,7 +326,7 @@
         NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"EventCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    Event *event = [mainArray objectAtIndex:indexPath.row];
+    Event *event = [filteredArray objectAtIndex:indexPath.row];
     cell.eventLocationLabel.text = event.location;
     cell.eventNameLabel.text = event.event;
     cell.eventStartTimeLabel.text = [NSString stringWithFormat:@"%@-%@",event.start,event.stop];
@@ -343,7 +338,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Event *event = [mainArray objectAtIndex:indexPath.row];
+    Event *event = [filteredArray objectAtIndex:indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self openCellOptionView:event];
     selectedIndex = indexPath;

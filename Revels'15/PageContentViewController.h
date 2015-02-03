@@ -11,8 +11,9 @@
 
 @interface PageContentViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
+-(void)scrollToTheTop;
 
 @property NSInteger pageIndex;
-@property NSString *titleText;
+@property NSString *categoryText;
 
 @end
