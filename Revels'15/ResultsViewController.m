@@ -12,6 +12,8 @@
 #import "SSJSONModel.h"
 #import "PQFCirclesInTriangle.h"
 #import "ResultsTableViewCell.h"
+#import "CellOptionView.h"
+#import "Event.h"
 
 @interface ResultsViewController () <UITableViewDataSource,UITableViewDelegate,SSJSONModelDelegate>
 {
@@ -28,6 +30,8 @@
     
 }
 @property IBOutlet UITableView *myTableView;
+@property CellOptionView * cellOptionView;
+
 
 @end
 
@@ -84,6 +88,8 @@
     _myTableView.contentInset = UIEdgeInsetsMake(66, 0, 0, 0);
 }
 
+#pragma mark - Get Data
+
 -(void)jsonRequestDidCompleteWithDict:(NSDictionary *)dict model:(SSJSONModel *)JSONModel
 {
     mainDictionary = [[NSDictionary alloc]init];
@@ -115,6 +121,53 @@
     }
 }
 
+#pragma mark - Cell Option View
+
+-(void)openCellOptionView:(NSString*)event andContent:(NSString*)cont
+{
+    //    NSLog(@"%@",event.event);
+    
+    if (_cellOptionView == nil) {
+        NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
+        _cellOptionView = [nib objectAtIndex:0];
+    }
+    
+    _cellOptionView.frame = CGRectMake(0, self.view.frame.size.height + 110, self.view.frame.size.width-20, _cellOptionView.frame.size.height);
+    _cellOptionView.eventLabel.text = event;
+    _cellOptionView.eventDescription.text = cont;
+    
+    
+    [_cellOptionView.addToFollowingButton setTitle:@"Done" forState:UIControlStateNormal];
+    [_cellOptionView.addToFollowingButton addTarget:self action:@selector(removeCellMenuView) forControlEvents:UIControlEventTouchUpInside];
+    
+    loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
+    loadBg.backgroundColor = [UIColor blackColor];
+    loadBg.alpha = 0.0;
+    [loadBg addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeCellMenuView)]];
+    [self.navigationController.view addSubview:loadBg];
+    [self.navigationController.view addSubview:_cellOptionView];
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loadBg.alpha = 0.75;
+        _cellOptionView.center = CGPointMake(self.view.center.x, self.view.center.y);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+-(void)removeCellMenuView
+{
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loadBg.alpha = 0.0;
+        _cellOptionView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 350);
+    } completion:^(BOOL finished) {
+        [loadBg removeFromSuperview];
+        [_cellOptionView removeFromSuperview];
+        _cellOptionView = nil;
+        loadBg = nil;
+    }];
+}
+
 #pragma mark - Table View
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -144,8 +197,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:eventName[indexPath.row] message:content[indexPath.row] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
+//    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:eventName[indexPath.row] message:content[indexPath.row] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//    [alert show];
+    
+    [self openCellOptionView:eventName[indexPath.row] andContent:content[indexPath.row]];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
