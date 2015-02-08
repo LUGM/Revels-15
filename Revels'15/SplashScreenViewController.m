@@ -40,6 +40,7 @@
     _hexTwo = nil;
     _hexThree = nil;
     _hexFour = nil;
+    [super viewDidDisappear:animated];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -55,6 +56,7 @@
     _hexThree.transform = CGAffineTransformMakeScale(0,0);
     _hexTwo.transform = CGAffineTransformMakeScale(0,0);
     _hexOne.transform = CGAffineTransformMakeScale(0,0);
+    _revelsLogo.transform = CGAffineTransformMakeTranslation(0,self.view.frame.size.width+100);
     [self hexAnimation];
 
 }
@@ -113,9 +115,13 @@
     [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         _sun.alpha = 1;
         _sun.transform = CGAffineTransformIdentity;
+
     } completion:^(BOOL finished) {
-        
-        timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextView) userInfo:nil repeats:NO];
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            _revelsLogo.transform =  CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextView) userInfo:nil repeats:NO];
+        }];
     }];
 }
 

@@ -36,6 +36,7 @@
     UIView * loadBg;
     UIRefreshControl * refreshControl;
     UIAlertView * connectionAlert;
+    UILabel * noDataLabel;
 }
 
 @property CellOptionView * cellOptionView;
@@ -152,20 +153,20 @@
 -(void)getData
 {
 
+    [noDataLabel removeFromSuperview];
     loadBg = [[UIView alloc]initWithFrame:self.view.frame];
     loadBg.backgroundColor = UIColorFromRGB(0x009589);
     loadBg.alpha = 0.75;
     [self.view addSubview:loadBg];
     self.circlesInTriangles = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
     [self.circlesInTriangles show];
-
     
     NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"SavedEvent"];
     NSError * error;
     NSArray * fetchedArray = [[CoreDataHelper managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     
     if ([self connected]) {
-        
+    //Fetching new data and
     // Deleting the previous data
     NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];       
         
@@ -176,10 +177,12 @@
         }
 
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
-    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/events/"]];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/apibluemonkey/events/"]];
     
     }
     else{
+        
+        //Looking for first time launch
         NSUInteger count = [[CoreDataHelper managedObjectContext] countForFetchRequest:fetchRequest error:&error];
         
         if (count == 0) {
@@ -187,6 +190,8 @@
             [connectionAlert show];
         }
         else{
+            //Normal Offline Condition
+            
             [self.view addSubview:myTableView];
             mainArray = [fetchedArray mutableCopy];
             [self filterTheArrayAndDisplay];
@@ -216,7 +221,10 @@
             savedEvent.stop = event.stop;
             savedEvent.categ = event.categ;
             savedEvent.prerevels = event.prerevels;
-            savedEvent.day = event.day;
+            if ([event.day isEqual:@"null"]) {
+                savedEvent.day = 0;
+            }
+//            savedEvent.day = event.day;
             savedEvent.desc = event.desc;
             savedEvent.location = event.location;
             savedEvent.contact = event.contact;
@@ -242,9 +250,23 @@
         }
     }
     
+    if ([filteredArray count]!= 0) {
+        [self.view addSubview:myTableView];
+        [myTableView reloadData];
+    }
+    else
+    {
         
-    [self.view addSubview:myTableView];
-    [myTableView reloadData];
+        noDataLabel = [[UILabel alloc]init];
+        noDataLabel.text = @"No Data for this field";
+        noDataLabel.frame = CGRectMake(0, 0, self.view.frame.size.width, 50);
+        noDataLabel.center = self.view.center;
+        noDataLabel.textColor = [UIColor grayColor];
+        [noDataLabel setTextAlignment:NSTextAlignmentCenter];
+        
+        [self.view addSubview:noDataLabel];
+    }
+    
     [loadBg removeFromSuperview];
     loadBg = nil;
     [self.circlesInTriangles hide];

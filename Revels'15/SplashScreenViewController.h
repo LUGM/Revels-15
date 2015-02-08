@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *hexTwo;
 @property (weak, nonatomic) IBOutlet UIImageView *hexThree;
 @property (weak, nonatomic) IBOutlet UIImageView *hexFour;
+@property (weak, nonatomic) IBOutlet UIImageView *revelsLogo;
 
 @end

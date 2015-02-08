@@ -13,19 +13,19 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEF-D2-hav">
                     <rect key="frame" x="25" y="150" width="250" height="50"/>
-                    <state key="normal" image="results.png">
+                    <state key="normal" image="results2.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPE-nm-3qu">
                     <rect key="frame" x="25" y="38" width="250" height="50"/>
-                    <state key="normal" image="following.png">
+                    <state key="normal" image="following2.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nn8-85-fPn">
                     <rect key="frame" x="25" y="259" width="250" height="50"/>
-                    <state key="normal" image="team.png">
+                    <state key="normal" image="team2.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <metadata>
@@ -39,13 +39,14 @@
             <connections>
                 <outlet property="followingButton" destination="wPE-nm-3qu" id="a1C-Az-fxh"/>
                 <outlet property="resultsButton" destination="UEF-D2-hav" id="hUO-N6-AMC"/>
+                <outlet property="teamButton" destination="Nn8-85-fPn" id="io4-o7-aZi"/>
             </connections>
             <point key="canvasLocation" x="323" y="338"/>
         </view>
     </objects>
     <resources>
-        <image name="following.png" width="250" height="50"/>
-        <image name="results.png" width="250" height="50"/>
-        <image name="team.png" width="250" height="50"/>
+        <image name="following2.png" width="250" height="50"/>
+        <image name="results2.png" width="250" height="50"/>
+        <image name="team2.png" width="250" height="50"/>
     </resources>
 </document>

@@ -69,7 +69,7 @@
     self.title = @"Results";
     
     jsonInstance = [[SSJSONModel alloc]initWithDelegate:self];
-    [jsonInstance sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/results/"]];
+    [jsonInstance sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/apibluemonkey/results/"]];
     loadBg = [[UIView alloc]initWithFrame:self.view.frame];
     loadBg.backgroundColor = UIColorFromRGB(0x009589);
     [self.view addSubview:loadBg];

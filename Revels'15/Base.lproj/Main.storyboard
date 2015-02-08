@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -26,6 +27,7 @@
                         <segue destination="tFC-t3-AYJ" kind="presentation" identifier="showInstafeed" id="Vrc-gg-HJa"/>
                         <segue destination="5mo-1N-YJh" kind="presentation" identifier="follow" id="9gs-sY-KBn"/>
                         <segue destination="rNY-5q-xnG" kind="presentation" identifier="showResults" id="CdE-Te-6A5"/>
+                        <segue destination="rZD-YL-Ilz" kind="show" identifier="showDevView" id="eJ5-4n-we4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -51,6 +53,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="643-Yz-WWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2039" y="-318"/>
+        </scene>
+        <!--Developer View Controller-->
+        <scene sceneID="rgM-pC-Se2">
+            <objects>
+                <viewController id="rZD-YL-Ilz" customClass="DeveloperViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7LH-n1-nYn"/>
+                        <viewControllerLayoutGuide type="bottom" id="jgC-6K-sJ4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zTz-rG-uCy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1.png" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-eY-2do">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlo-Gb-laq">
+                                <rect key="frame" x="16" y="180" width="75" height="75"/>
+                                <state key="normal" image="4.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4m-Zd-7xl">
+                                <rect key="frame" x="123" y="93" width="75" height="75"/>
+                                <state key="normal" image="3.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tad-lV-Wr8">
+                                <rect key="frame" x="16" y="376" width="75" height="75"/>
+                                <state key="normal" image="6.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUH-BU-S7s">
+                                <rect key="frame" x="123" y="277" width="75" height="75"/>
+                                <state key="normal" image="5.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFc-q0-FoA">
+                                <rect key="frame" x="229" y="376" width="75" height="75"/>
+                                <state key="normal" image="8.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uH0-Dv-DoK">
+                                <rect key="frame" x="229" y="180" width="75" height="75"/>
+                                <state key="normal" image="7.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dUH-BU-S7s" firstAttribute="centerX" secondItem="zTz-rG-uCy" secondAttribute="centerX" id="29B-TW-0Jf"/>
+                            <constraint firstItem="uH0-Dv-DoK" firstAttribute="top" secondItem="Hlo-Gb-laq" secondAttribute="top" id="3s0-Uc-gpn"/>
+                            <constraint firstItem="2tA-eY-2do" firstAttribute="centerX" secondItem="dUH-BU-S7s" secondAttribute="centerX" id="8RJ-4g-M4s"/>
+                            <constraint firstItem="2tA-eY-2do" firstAttribute="top" secondItem="zTz-rG-uCy" secondAttribute="top" id="9Df-lc-86r"/>
+                            <constraint firstItem="z4m-Zd-7xl" firstAttribute="leading" secondItem="dUH-BU-S7s" secondAttribute="leading" id="BEW-Y3-NoY"/>
+                            <constraint firstItem="z4m-Zd-7xl" firstAttribute="top" secondItem="7LH-n1-nYn" secondAttribute="bottom" constant="49" id="D5p-Nb-RuX"/>
+                            <constraint firstItem="Hlo-Gb-laq" firstAttribute="top" secondItem="7LH-n1-nYn" secondAttribute="bottom" constant="136" id="GOz-MT-vQd"/>
+                            <constraint firstItem="Hlo-Gb-laq" firstAttribute="leading" secondItem="zTz-rG-uCy" secondAttribute="leadingMargin" id="OJB-Hh-Q6K"/>
+                            <constraint firstItem="Tad-lV-Wr8" firstAttribute="leading" secondItem="Hlo-Gb-laq" secondAttribute="leading" id="Tjh-Tk-lmP"/>
+                            <constraint firstItem="bFc-q0-FoA" firstAttribute="trailing" secondItem="zTz-rG-uCy" secondAttribute="trailingMargin" id="VWR-Sp-2yh"/>
+                            <constraint firstItem="2tA-eY-2do" firstAttribute="leading" secondItem="zTz-rG-uCy" secondAttribute="leading" id="Yjm-hO-RcJ"/>
+                            <constraint firstItem="jgC-6K-sJ4" firstAttribute="top" secondItem="dUH-BU-S7s" secondAttribute="bottom" constant="216" id="gSU-aC-IAM"/>
+                            <constraint firstItem="jgC-6K-sJ4" firstAttribute="top" secondItem="Tad-lV-Wr8" secondAttribute="bottom" constant="117" id="nwY-zS-JED"/>
+                            <constraint firstItem="2tA-eY-2do" firstAttribute="bottom" secondItem="jgC-6K-sJ4" secondAttribute="top" id="q2A-E7-XhW"/>
+                            <constraint firstItem="bFc-q0-FoA" firstAttribute="leading" secondItem="uH0-Dv-DoK" secondAttribute="leading" id="sjC-1S-ev8"/>
+                            <constraint firstItem="Tad-lV-Wr8" firstAttribute="top" secondItem="bFc-q0-FoA" secondAttribute="top" id="tsP-yB-8nz"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="buttonFive" destination="dUH-BU-S7s" id="Knd-0Q-Gp2"/>
+                        <outlet property="buttonFour" destination="Tad-lV-Wr8" id="cER-R1-RFe"/>
+                        <outlet property="buttonOne" destination="Hlo-Gb-laq" id="D9e-bK-uGP"/>
+                        <outlet property="buttonSix" destination="bFc-q0-FoA" id="T5C-wp-iX9"/>
+                        <outlet property="buttonThree" destination="uH0-Dv-DoK" id="hWp-Pk-kkh"/>
+                        <outlet property="buttonTwo" destination="z4m-Zd-7xl" id="wQR-aO-dwi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kYD-fA-IH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="579" y="1062"/>
         </scene>
         <!--Page Content View Controller-->
         <scene sceneID="BMh-Rh-sKt">
@@ -226,15 +314,23 @@
                                     <constraint firstAttribute="height" constant="275" id="oWv-4X-jpO"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="revelsSplashLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mcy-nW-l7F">
+                                <rect key="frame" x="28" y="384" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="DTT-IH-NK1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JJD-bK-Kbv" firstAttribute="top" secondItem="Mcy-nW-l7F" secondAttribute="bottom" constant="-66" id="1Bd-1G-RQF"/>
                             <constraint firstAttribute="centerX" secondItem="g4h-Cz-RUj" secondAttribute="centerX" constant="6.5" id="5qw-aT-NmF"/>
                             <constraint firstAttribute="centerX" secondItem="EdI-FJ-9fm" secondAttribute="centerX" constant="6.5" id="9fc-rm-qA1"/>
                             <constraint firstItem="W9h-Hn-ayY" firstAttribute="top" secondItem="aOC-Ia-dmW" secondAttribute="bottom" constant="51" id="BKo-OC-FjX"/>
                             <constraint firstAttribute="centerX" secondItem="W9h-Hn-ayY" secondAttribute="centerX" constant="6.5" id="J2f-kB-ep9"/>
                             <constraint firstAttribute="centerX" secondItem="66x-Q7-SU5" secondAttribute="centerX" constant="6.5" id="Khp-uw-jMY"/>
                             <constraint firstItem="EdI-FJ-9fm" firstAttribute="top" secondItem="aOC-Ia-dmW" secondAttribute="bottom" constant="52" id="N2l-Pm-Tr8"/>
+                            <constraint firstAttribute="centerX" secondItem="Mcy-nW-l7F" secondAttribute="centerX" constant="7" id="a0o-v6-owJ"/>
                             <constraint firstAttribute="centerX" secondItem="T0p-ke-1ch" secondAttribute="centerX" constant="6.5" id="ay3-hU-37M"/>
                             <constraint firstAttribute="centerX" secondItem="0rv-YD-Jis" secondAttribute="centerX" constant="6.5" id="f0o-5m-mSr"/>
                             <constraint firstItem="T0p-ke-1ch" firstAttribute="top" secondItem="aOC-Ia-dmW" secondAttribute="bottom" constant="51" id="lK7-NL-OnS"/>
@@ -251,6 +347,7 @@
                         <outlet property="hexThree" destination="EdI-FJ-9fm" id="4M3-pO-yoh"/>
                         <outlet property="hexTwo" destination="g4h-Cz-RUj" id="uRt-SQ-eiG"/>
                         <outlet property="man" destination="W9h-Hn-ayY" id="Mis-W0-SAC"/>
+                        <outlet property="revelsLogo" destination="Mcy-nW-l7F" id="Upq-NS-jwm"/>
                         <outlet property="sun" destination="T0p-ke-1ch" id="Aw9-aX-ePM"/>
                         <segue destination="9Ox-UJ-aP2" kind="presentation" identifier="showNextView" id="UvV-1d-nDD"/>
                     </connections>
@@ -276,7 +373,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iw7-wj-Aij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="623" y="347"/>
+            <point key="canvasLocation" x="579" y="347"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JWQ-LI-G6c">
@@ -317,11 +414,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="3.png" width="75" height="75"/>
+        <image name="4.png" width="75" height="75"/>
+        <image name="5.png" width="75" height="75"/>
+        <image name="6.png" width="75" height="75"/>
+        <image name="7.png" width="75" height="75"/>
+        <image name="8.png" width="75" height="75"/>
+        <image name="bg1.png" width="640" height="1136"/>
         <image name="hexFour" width="250" height="250"/>
         <image name="hexOne" width="250" height="250"/>
         <image name="hexThree" width="250" height="250"/>
         <image name="hexTwo" width="250" height="250"/>
         <image name="man" width="250" height="250"/>
+        <image name="revelsSplashLogo.png" width="250" height="250"/>
         <image name="sun" width="250" height="250"/>
     </resources>
 </document>

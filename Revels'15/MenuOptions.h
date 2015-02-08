@@ -12,5 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *followingButton;
 @property (weak, nonatomic) IBOutlet UIButton *resultsButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *teamButton;
 @end

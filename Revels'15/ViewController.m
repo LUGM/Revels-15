@@ -103,7 +103,7 @@
         }
     //sending the request
     jsonReq = [[SSJSONModel alloc]initWithDelegate:self];
-    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/api/categories/"]];
+    [jsonReq sendRequestWithUrl:[NSURL URLWithString:@"http://mitrevels.in/apibluemonkey/categories/"]];
     
     }
     else
@@ -286,6 +286,8 @@
     menuView = [nib objectAtIndex:0];
     [menuView.followingButton addTarget:self action:@selector(segueToFollowingTab) forControlEvents:UIControlEventTouchUpInside];
     [menuView.resultsButton addTarget:self action:@selector(segueToResultsTab) forControlEvents:UIControlEventTouchUpInside];
+    [menuView.teamButton addTarget:self action:@selector(segueToDeveloperTab) forControlEvents:UIControlEventTouchUpInside];
+    
     menuView.center = self.view.center;
     menuView.transform = CGAffineTransformMakeTranslation(0, self.view.frame.size.height - 50);
     
@@ -350,23 +352,39 @@
 
 #pragma mark - Segue Methods
 
+-(void)segueToDeveloperTab
+{
+    [self performSegueWithIdentifier:@"showDevView" sender:self];
+    [self removeBgAndMenuWithdirectionUp:YES];
+}
+
 -(void)segueToFollowingTab
 {
-    [self removeBgAndMenuWithdirectionUp:YES];
-    [self performSegueWithIdentifier:@"follow" sender:self];
+        [self performSegueWithIdentifier:@"follow" sender:self];
+        [self removeBgAndMenuWithdirectionUp:YES];
 }
 
 -(void)segueToResultsTab
 {
+    if (![self connected]) {
+        UIAlertView * netAlert = [[UIAlertView alloc]initWithTitle:@"No Network" message:@"Internet Connection Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [netAlert show];
+    }
+    else{
     [self removeBgAndMenuWithdirectionUp:YES];
     [self performSegueWithIdentifier:@"showResults" sender:self];
+    }
 }
-
-#pragma mark - Segue to other View Controllers
 
 -(void)showInstaFeed
 {
+    if (![self connected]) {
+        UIAlertView * netAlert = [[UIAlertView alloc]initWithTitle:@"No Network" message:@"Internet Connection Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [netAlert show];
+    }
+    else{
     [self performSegueWithIdentifier:@"showInstafeed" sender:self];
+    }
 }
 
 @end
