@@ -56,6 +56,7 @@
 
     } completion:nil];
     [super viewDidAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,6 +155,13 @@
         devView = nil;
         bgFade = nil;
     }];
+}
+
+//For Easter Egg
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (motion == UIEventSubtypeMotionShake) {
+        [self performSegueWithIdentifier:@"showEasterEgg" sender:self];
+    }
 }
 
 @end

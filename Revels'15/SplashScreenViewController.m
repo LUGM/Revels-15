@@ -50,13 +50,13 @@
     
     _sun.alpha = 0;
     _man.transform = CGAffineTransformMakeTranslation(self.view.frame.size.width + 400, 0);
-    
+    _volatus.alpha = 0.0;
     _sun.transform = CGAffineTransformMakeScale(0, 0);
     _hexFour.transform = CGAffineTransformMakeScale(0,0);
     _hexThree.transform = CGAffineTransformMakeScale(0,0);
     _hexTwo.transform = CGAffineTransformMakeScale(0,0);
     _hexOne.transform = CGAffineTransformMakeScale(0,0);
-    _revelsLogo.transform = CGAffineTransformMakeTranslation(0,self.view.frame.size.width+100);
+    _revelsLogoText.transform = CGAffineTransformMakeTranslation(0, 300);
     [self hexAnimation];
 
 }
@@ -117,8 +117,10 @@
         _sun.transform = CGAffineTransformIdentity;
 
     } completion:^(BOOL finished) {
+        _volatus.alpha = 1;
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            _revelsLogo.transform =  CGAffineTransformIdentity;
+            _revelsLogoText.transform =  CGAffineTransformIdentity;
+        
         } completion:^(BOOL finished) {
             timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(nextView) userInfo:nil repeats:NO];
         }];

@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveImage)];
     
 }
 
@@ -41,6 +41,23 @@
     [self sendRequestWithUrl:[NSURL URLWithString:_requiredUrl]];
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleTap)];
     [self.scrollView addGestureRecognizer:tap];
+}
+
+-(void)saveImage
+{
+    if (_imageView.image == nil) {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Loading" message:@"Wait for the Image to load" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
+    UIImage* imageToSave = [_imageView image]; // alternatively, imageView.image
+    
+    // Save it to the camera roll / saved photo album
+    UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil);
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Done" message:@"Saved in Photo Library" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+
+    }
 }
 
 -(void)singleTap{
