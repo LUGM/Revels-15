@@ -88,6 +88,8 @@
     
     [_cellOptionView.addToFollowingButton setTitle:@"Done" forState:UIControlStateNormal];
     [_cellOptionView.addToFollowingButton addTarget:self action:@selector(removeCellMenuView) forControlEvents:UIControlEventTouchUpInside];
+    [_cellOptionView.callButton addTarget:self action:@selector(makeCall) forControlEvents:UIControlEventTouchUpInside];
+
     
     loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
     loadBg.backgroundColor = [UIColor blackColor];
@@ -116,6 +118,28 @@
         loadBg = nil;
     }];
 }
+
+-(void)makeCall
+{
+    NSIndexPath * pathForSelectedEvent = [myTableView indexPathForSelectedRow];
+    Event * event = [mainArray objectAtIndex:pathForSelectedEvent.row];
+    NSLog(@"%@", event.contact);
+    
+    NSString *extractNumberString = [[event.contact componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+    //To extract the number from the string
+    NSLog(@"%@",extractNumberString);
+    
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt://+91%@",extractNumberString]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+        [[UIApplication sharedApplication] openURL:phoneUrl];
+    } else
+    {
+        UIAlertView *  calert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Call facility is not available!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [calert show];
+    }
+}
+
 
 #pragma mark - Segues
 

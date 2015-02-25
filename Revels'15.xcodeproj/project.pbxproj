@@ -38,6 +38,7 @@
 		A33AD71B1A87955F00D43311 /* devimg4.png in Resources */ = {isa = PBXBuildFile; fileRef = A33AD71A1A87955F00D43311 /* devimg4.png */; };
 		A35D35971A68409C008CFF49 /* ViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A35D35961A68409C008CFF49 /* ViewPagerController.m */; };
 		A360D5B01A8E8D9B00DFB6A5 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A360D5AF1A8E8D9B00DFB6A5 /* Images-2.xcassets */; };
+		A3649CA01A9E011F003810E5 /* Phone1-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A3649C9F1A9E011F003810E5 /* Phone1-50.png */; };
 		A36A132E1A6ECA0400C74FB7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A36A132D1A6ECA0400C74FB7 /* Reachability.m */; };
 		A3711F8D1A67E7380021A926 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = A3711F891A67E7380021A926 /* PQFCirclesInTriangle.m */; };
 		A3711F901A67E7B60021A926 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = A3711F8F1A67E7B60021A926 /* UIColor+FlatColors.m */; };
@@ -145,6 +146,7 @@
 		A35D35951A68409C008CFF49 /* ViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPagerController.h; sourceTree = "<group>"; };
 		A35D35961A68409C008CFF49 /* ViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPagerController.m; sourceTree = "<group>"; };
 		A360D5AF1A8E8D9B00DFB6A5 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		A3649C9F1A9E011F003810E5 /* Phone1-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Phone1-50.png"; sourceTree = "<group>"; };
 		A36A132C1A6ECA0400C74FB7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A36A132D1A6ECA0400C74FB7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A3711F881A67E7380021A926 /* PQFCirclesInTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCirclesInTriangle.h; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				A334C6751A89276000143F9C /* linuxtux.png */,
 				A334C6771A89282E00143F9C /* github-50.png */,
 				A334C67B1A892EB700143F9C /* facebookButton.png */,
+				A3649C9F1A9E011F003810E5 /* Phone1-50.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A334C6741A891C4C00143F9C /* 8.png in Resources */,
+				A3649CA01A9E011F003810E5 /* Phone1-50.png in Resources */,
 				A334C6721A891C4C00143F9C /* 6.png in Resources */,
 				A334C6761A89276000143F9C /* linuxtux.png in Resources */,
 				A3D03F931A74BE35005F016E /* ic_contact.png in Resources */,

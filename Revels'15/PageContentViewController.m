@@ -95,20 +95,10 @@
     }
 }
 
-//-(UIView*)getParallaxView
-//{
-//    UIImage * image = [UIImage imageNamed:@"parallaxLogo2.png"];
-//    UIImageView * imageView = [[UIImageView alloc] initWithImage:image];
-////    imageView.center = self.view.center;
-//    return imageView;
-//}
-
-
 #pragma mark - Cell Option View
 
 -(void)openCellOptionView:(Event*)event
 {
-//    NSLog(@"%@",event.event);
     
     if (_cellOptionView == nil) {
         NSArray * nib = [[NSBundle mainBundle]loadNibNamed:@"CellOptionView" owner:self options:nil];
@@ -120,6 +110,7 @@
     _cellOptionView.eventDescription.text = event.desc;
     
     [_cellOptionView.addToFollowingButton addTarget:self action:@selector(addEventToFollowing) forControlEvents:UIControlEventTouchUpInside];
+    [_cellOptionView.callButton addTarget:self action:@selector(makeCall) forControlEvents:UIControlEventTouchUpInside];
 
     loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
     loadBg.backgroundColor = [UIColor blackColor];
@@ -149,6 +140,26 @@
     }];
 }
 
+-(void)makeCall
+{
+    NSIndexPath * pathForSelectedEvent = [myTableView indexPathForSelectedRow];
+    Event * event = [filteredArray objectAtIndex:pathForSelectedEvent.row];
+    NSLog(@"%@", event.contact);
+    
+    NSString *extractNumberString = [[event.contact componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+    //To extract the number from the string
+    NSLog(@"%@",extractNumberString);
+    
+    NSURL *phoneUrl = [NSURL URLWithString:[NSString  stringWithFormat:@"telprompt://+91%@",extractNumberString]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+        [[UIApplication sharedApplication] openURL:phoneUrl];
+    } else
+    {
+       UIAlertView *  calert = [[UIAlertView alloc]initWithTitle:@"Alert" message:@"Call facility is not available!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [calert show];
+    }
+}
 # pragma mark - Request
 -(void)getData
 {
@@ -223,8 +234,10 @@
             savedEvent.prerevels = event.prerevels;
             if ([event.day isEqual:@"null"]) {
                 savedEvent.day = 0;
+            }else
+            {
+            savedEvent.day = event.day;
             }
-//            savedEvent.day = event.day;
             savedEvent.desc = event.desc;
             savedEvent.location = event.location;
             savedEvent.contact = event.contact;
@@ -318,7 +331,9 @@
     followEvent.stop = event.stop;
     followEvent.desc = event.desc;
     followEvent.contact = event.contact;
-    
+    followEvent.date = event.date;
+    followEvent.day = event.day;
+        
     if (![context save:&error]) {
         NSLog(@"%@",error);
     }

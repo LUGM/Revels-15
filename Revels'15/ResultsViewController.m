@@ -139,6 +139,8 @@
     
     [_cellOptionView.addToFollowingButton setTitle:@"Done" forState:UIControlStateNormal];
     [_cellOptionView.addToFollowingButton addTarget:self action:@selector(removeCellMenuView) forControlEvents:UIControlEventTouchUpInside];
+    [_cellOptionView.callButton setHidden:YES];
+    [_cellOptionView.callButton setEnabled:NO];
     
     loadBg = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
     loadBg.backgroundColor = [UIColor blackColor];

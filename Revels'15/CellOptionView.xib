@@ -30,19 +30,6 @@
                         <constraint firstAttribute="centerY" secondItem="1xW-Q3-XsS" secondAttribute="centerY" id="eBd-Iz-xNV"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-F2-PED">
-                    <rect key="frame" x="32" y="336" width="237" height="40"/>
-                    <color key="backgroundColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="B5H-J6-wnX"/>
-                        <constraint firstAttribute="width" constant="237" id="o0a-pj-RwA"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                    <state key="normal" title="ADD TO FOLLOWING">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XA6-0U-i0f">
                     <rect key="frame" x="0.0" y="62" width="300" height="266"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,23 +38,48 @@
                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="22"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vY6-Dq-zh2">
+                    <rect key="frame" x="248" y="337" width="38" height="38"/>
+                    <color key="tintColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="Phone1-50.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-F2-PED">
+                    <rect key="frame" x="60" y="336" width="180" height="40"/>
+                    <color key="backgroundColor" red="0.1450980392" green="0.63921568630000003" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="B5H-J6-wnX"/>
+                        <constraint firstAttribute="width" constant="180" id="o0a-pj-RwA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="FOLLOW">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="vY6-Dq-zh2" secondAttribute="trailing" constant="14" id="1Do-aE-YYz"/>
                 <constraint firstAttribute="centerX" secondItem="krZ-F2-PED" secondAttribute="centerX" id="2Dp-Hu-DZr"/>
                 <constraint firstAttribute="bottom" secondItem="krZ-F2-PED" secondAttribute="bottom" constant="8" id="2zA-mj-XWj"/>
                 <constraint firstAttribute="trailing" secondItem="KvY-uW-dkM" secondAttribute="trailing" id="Bby-a2-1Xj"/>
                 <constraint firstItem="krZ-F2-PED" firstAttribute="top" secondItem="XA6-0U-i0f" secondAttribute="bottom" constant="8" id="Dl8-tS-eQo"/>
                 <constraint firstAttribute="trailing" secondItem="XA6-0U-i0f" secondAttribute="trailing" id="Ki7-GD-YOu"/>
                 <constraint firstItem="XA6-0U-i0f" firstAttribute="leading" secondItem="IG8-OH-BQd" secondAttribute="leading" id="LAf-Kq-kmW"/>
+                <constraint firstItem="vY6-Dq-zh2" firstAttribute="top" secondItem="XA6-0U-i0f" secondAttribute="bottom" constant="9" id="NXs-2b-Xe9"/>
                 <constraint firstItem="KvY-uW-dkM" firstAttribute="leading" secondItem="IG8-OH-BQd" secondAttribute="leading" id="b9v-pv-nFN"/>
+                <constraint firstItem="vY6-Dq-zh2" firstAttribute="centerY" secondItem="krZ-F2-PED" secondAttribute="centerY" id="dge-sI-H0V"/>
                 <constraint firstItem="KvY-uW-dkM" firstAttribute="top" secondItem="IG8-OH-BQd" secondAttribute="top" id="eq6-B3-TjJ"/>
+                <constraint firstItem="vY6-Dq-zh2" firstAttribute="leading" secondItem="krZ-F2-PED" secondAttribute="trailing" constant="8" symbolic="YES" id="n4y-oO-x7I"/>
                 <constraint firstItem="XA6-0U-i0f" firstAttribute="top" secondItem="KvY-uW-dkM" secondAttribute="bottom" id="qlP-AW-ess"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addToFollowingButton" destination="krZ-F2-PED" id="OPA-a0-Ja1"/>
+                <outlet property="callButton" destination="vY6-Dq-zh2" id="bgq-gH-I3w"/>
                 <outlet property="eventDescription" destination="XA6-0U-i0f" id="v5R-xx-ALr"/>
                 <outlet property="eventLabel" destination="1xW-Q3-XsS" id="KLz-sn-jrY"/>
                 <outlet property="greenView" destination="KvY-uW-dkM" id="cKY-gj-eiA"/>
@@ -75,4 +87,7 @@
             <point key="canvasLocation" x="493" y="313"/>
         </view>
     </objects>
+    <resources>
+        <image name="Phone1-50.png" width="50" height="50"/>
+    </resources>
 </document>

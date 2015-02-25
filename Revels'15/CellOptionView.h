@@ -15,5 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *addToFollowingButton;
 @property (weak, nonatomic) IBOutlet UIButton *addToParticipatingButton;
+@property (weak, nonatomic) IBOutlet UIButton *callButton;
 
 @end
