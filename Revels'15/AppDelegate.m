@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [NewRelicAgent startWithApplicationToken:@"AA9adf56b32a0b53d03b14852b3271644382988ff3"];
     //Navigation Bar Tint Colour
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x009589)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];

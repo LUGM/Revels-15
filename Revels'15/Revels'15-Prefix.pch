@@ -1,0 +1,18 @@
+//
+//  Revels'15-Prefix.pch
+//  Revels'15
+//
+//  Created by Shubham Sorte on 17/06/15.
+//  Copyright (c) 2015 LUGManipal. All rights reserved.
+//
+
+
+#import <NewRelicAgent/NewRelic.h>
+#ifndef Revels_15_Revels_15_Prefix_pch
+#define Revels_15_Revels_15_Prefix_pch
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

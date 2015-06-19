@@ -61,7 +61,6 @@
     self.navigationController.navigationBar.layer.shadowRadius = 4.0f;
     self.navigationController.navigationBar.layer.shadowOpacity = 1.0f;
     
-    
     //New Code With the view pager
     
     self.dataSource = self;
@@ -366,14 +365,17 @@
 
 -(void)segueToResultsTab
 {
-    if (![self connected]) {
-        UIAlertView * netAlert = [[UIAlertView alloc]initWithTitle:@"No Network" message:@"Internet Connection Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [netAlert show];
-    }
-    else{
-    [self removeBgAndMenuWithdirectionUp:YES];
-    [self performSegueWithIdentifier:@"showResults" sender:self];
-    }
+//    if (![self connected]) {
+//        UIAlertView * netAlert = [[UIAlertView alloc]initWithTitle:@"No Network" message:@"Internet Connection Required" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [netAlert show];
+//    }
+//    else{
+//    [self removeBgAndMenuWithdirectionUp:YES];
+//    [self performSegueWithIdentifier:@"showResults" sender:self];
+//    }
+    
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Result Data unavailable\n at the moment" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 -(void)showInstaFeed

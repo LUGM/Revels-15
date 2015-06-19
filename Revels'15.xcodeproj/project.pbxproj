@@ -52,6 +52,11 @@
 		A3B10AE21A873409001668E1 /* DeveloperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B10AE11A873409001668E1 /* DeveloperView.xib */; };
 		A3B10AE51A873537001668E1 /* DeveloperView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B10AE41A873537001668E1 /* DeveloperView.m */; };
 		A3B10AE71A874127001668E1 /* devimg.png in Resources */ = {isa = PBXBuildFile; fileRef = A3B10AE61A874127001668E1 /* devimg.png */; };
+		A3B93E461B31E9DC00C676B3 /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B93E451B31E9DC00C676B3 /* NewRelicAgent.framework */; };
+		A3B93E481B31E9EF00C676B3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B93E471B31E9EF00C676B3 /* CoreTelephony.framework */; };
+		A3B93E4A1B31E9FB00C676B3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B93E491B31E9FB00C676B3 /* SystemConfiguration.framework */; };
+		A3B93E4C1B31EA0600C676B3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B93E4B1B31EA0600C676B3 /* libc++.dylib */; };
+		A3B93E4E1B31EA1000C676B3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B93E4D1B31EA1000C676B3 /* libz.dylib */; };
 		A3BADF031A7901CF00FB3F90 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BADF021A7901CF00FB3F90 /* ResultCell.xib */; };
 		A3BBF9F51A693D8D00E63308 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BBF9F41A693D8D00E63308 /* Categories.m */; };
 		A3BBF9F81A69539B00E63308 /* instacell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BBF9F71A69539B00E63308 /* instacell.xib */; };
@@ -171,6 +176,12 @@
 		A3B10AE31A873537001668E1 /* DeveloperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeveloperView.h; sourceTree = "<group>"; };
 		A3B10AE41A873537001668E1 /* DeveloperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeveloperView.m; sourceTree = "<group>"; };
 		A3B10AE61A874127001668E1 /* devimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devimg.png; sourceTree = "<group>"; };
+		A3B93E451B31E9DC00C676B3 /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NewRelicAgent.framework; sourceTree = "<group>"; };
+		A3B93E471B31E9EF00C676B3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A3B93E491B31E9FB00C676B3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A3B93E4B1B31EA0600C676B3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A3B93E4D1B31EA1000C676B3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A3B93E4F1B31EAB600C676B3 /* Revels'15-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Revels'15-Prefix.pch"; sourceTree = "<group>"; };
 		A3BADF021A7901CF00FB3F90 /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		A3BBF9F31A693D8D00E63308 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		A3BBF9F41A693D8D00E63308 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
@@ -241,7 +252,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B93E4E1B31EA1000C676B3 /* libz.dylib in Frameworks */,
+				A3B93E4C1B31EA0600C676B3 /* libc++.dylib in Frameworks */,
+				A3B93E4A1B31E9FB00C676B3 /* SystemConfiguration.framework in Frameworks */,
+				A3B93E481B31E9EF00C676B3 /* CoreTelephony.framework in Frameworks */,
 				A3DC742F1A6D6D1C00B3ACBA /* CoreData.framework in Frameworks */,
+				A3B93E461B31E9DC00C676B3 /* NewRelicAgent.framework in Frameworks */,
 				A30141E11A64E8FF006C10C6 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +275,11 @@
 		A30141E01A64E8E5006C10C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3B93E4D1B31EA1000C676B3 /* libz.dylib */,
+				A3B93E4B1B31EA0600C676B3 /* libc++.dylib */,
+				A3B93E491B31E9FB00C676B3 /* SystemConfiguration.framework */,
+				A3B93E471B31E9EF00C676B3 /* CoreTelephony.framework */,
+				A3B93E451B31E9DC00C676B3 /* NewRelicAgent.framework */,
 				A3DC742D1A6D6D0600B3ACBA /* CoreData.framework */,
 				A30141DE1A64E8DB006C10C6 /* QuartzCore.framework */,
 			);
@@ -308,6 +329,7 @@
 				A3162DCC1A52D98D007F7010 /* AppDelegate.m */,
 				A3162DC81A52D98D007F7010 /* Info.plist */,
 				A3162DC91A52D98D007F7010 /* main.m */,
+				A3B93E4F1B31EAB600C676B3 /* Revels'15-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -622,6 +644,7 @@
 				A3162DC01A52D98D007F7010 /* Sources */,
 				A3162DC11A52D98D007F7010 /* Frameworks */,
 				A3162DC21A52D98D007F7010 /* Resources */,
+				A3B93E511B31EBD600C676B3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -734,6 +757,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A3B93E511B31EBD600C676B3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SCRIPT=`/usr/bin/find \"${SRCROOT}\" -name newrelic_postbuild.sh | head -n 1`\n\n/bin/sh \"${SCRIPT}\" \"AA9adf56b32a0b53d03b14852b3271644382988ff3\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A3162DC01A52D98D007F7010 /* Sources */ = {
@@ -904,6 +943,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREFIX_HEADER = "Revels'15/Revels'15-Prefix.pch";
 				INFOPLIST_FILE = "Revels'15/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -918,6 +962,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREFIX_HEADER = "Revels'15/Revels'15-Prefix.pch";
 				INFOPLIST_FILE = "Revels'15/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
